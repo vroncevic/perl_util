@@ -1,4 +1,4 @@
-# This Makefile is for the Configuration extension to perl.
+# This Makefile is for the Status extension to perl.
 #
 # It was generated automatically by MakeMaker version
 # 7.04 (Revision: 70400) from the contents of
@@ -11,14 +11,14 @@
 
 #   MakeMaker Parameters:
 
-#     ABSTRACT_FROM => q[lib/Configuration.pm]
+#     ABSTRACT_FROM => q[lib/Status.pm]
 #     AUTHOR => [q[Vladimir Roncevic <vladimir.roncevic@forbas.com>]]
 #     BUILD_REQUIRES => {  }
 #     CONFIGURE_REQUIRES => {  }
-#     NAME => q[Configuration]
+#     NAME => q[Status]
 #     PREREQ_PM => {  }
 #     TEST_REQUIRES => {  }
-#     VERSION_FROM => q[lib/Configuration.pm]
+#     VERSION_FROM => q[lib/Status.pm]
 
 # --- MakeMaker post_initialize section:
 
@@ -55,8 +55,8 @@ VENDORLIBEXP = /usr/lib/perl5/vendor_perl/5.18.2
 AR_STATIC_ARGS = cr
 DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
-NAME = Configuration
-NAME_SYM = Configuration
+NAME = Status
+NAME_SYM = Status
 VERSION = 1.0
 VERSION_MACRO = VERSION
 VERSION_SYM = 1_0
@@ -145,11 +145,11 @@ MM_REVISION = 70400
 # PARENT_NAME = NAME without BASEEXT and no trailing :: (eg Foo::Bar)
 # DLBASE  = Basename part of dynamic library. May be just equal BASEEXT.
 MAKE = make
-FULLEXT = Configuration
-BASEEXT = Configuration
+FULLEXT = Status
+BASEEXT = Status
 PARENT_NAME = 
 DLBASE = $(BASEEXT)
-VERSION_FROM = lib/Configuration.pm
+VERSION_FROM = lib/Status.pm
 OBJECT = 
 LDFROM = $(OBJECT)
 LINKTYPE = dynamic
@@ -161,7 +161,7 @@ C_FILES  =
 O_FILES  = 
 H_FILES  = 
 MAN1PODS = 
-MAN3PODS = lib/Configuration.pm
+MAN3PODS = lib/Status.pm
 
 # Where is the Config information that we are using/depend on
 CONFIGDEP = $(PERL_ARCHLIBDEP)$(DFSEP)Config.pm $(PERL_INCDEP)$(DFSEP)config.h
@@ -184,10 +184,10 @@ PERL_ARCHIVEDEP    =
 PERL_ARCHIVE_AFTER = 
 
 
-TO_INST_PM = lib/Configuration.pm
+TO_INST_PM = lib/Status.pm
 
-PM_TO_BLIB = lib/Configuration.pm \
-	blib/lib/Configuration.pm
+PM_TO_BLIB = lib/Status.pm \
+	blib/lib/Status.pm
 
 
 # --- MakeMaker platform_constants section:
@@ -256,8 +256,8 @@ CI = ci -u
 RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
-DISTNAME = Configuration
-DISTVNAME = Configuration-1.0
+DISTNAME = Status
+DISTVNAME = Status-1.0
 
 
 # --- MakeMaker macro section:
@@ -411,9 +411,9 @@ POD2MAN = $(POD2MAN_EXE)
 
 
 manifypods : pure_all  \
-	lib/Configuration.pm
+	lib/Status.pm
 	$(NOECHO) $(POD2MAN) --section=3 --perm_rw=$(PERM_RW) -u \
-	  lib/Configuration.pm $(INST_MAN3DIR)/Configuration.$(MAN3EXT) 
+	  lib/Status.pm $(INST_MAN3DIR)/Status.$(MAN3EXT) 
 
 
 
@@ -471,7 +471,7 @@ realclean_subdirs :
 # Delete temporary files (via clean) and also delete dist files
 realclean purge ::  clean realclean_subdirs
 	- $(RM_F) \
-	  $(FIRST_MAKEFILE) $(MAKEFILE_OLD) 
+	  $(MAKEFILE_OLD) $(FIRST_MAKEFILE) 
 	- $(RM_RF) \
 	  $(DISTVNAME) 
 
@@ -480,7 +480,7 @@ realclean purge ::  clean realclean_subdirs
 metafile : create_distdir
 	$(NOECHO) $(ECHO) Generating META.yml
 	$(NOECHO) $(ECHO) '---' > META_new.yml
-	$(NOECHO) $(ECHO) 'abstract: '\''Perl extension for load and parse configuration from file'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'abstract: '\''Perl extension for status constants'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'author:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  - '\''Vladimir Roncevic <vladimir.roncevic@forbas.com>'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'build_requires:' >> META_new.yml
@@ -493,7 +493,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) 'meta-spec:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  url: http://module-build.sourceforge.net/META-spec-v1.4.html' >> META_new.yml
 	$(NOECHO) $(ECHO) '  version: '\''1.4'\''' >> META_new.yml
-	$(NOECHO) $(ECHO) 'name: Configuration' >> META_new.yml
+	$(NOECHO) $(ECHO) 'name: Status' >> META_new.yml
 	$(NOECHO) $(ECHO) 'no_index:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  directory:' >> META_new.yml
 	$(NOECHO) $(ECHO) '    - t' >> META_new.yml
@@ -504,7 +504,7 @@ metafile : create_distdir
 	-$(NOECHO) $(MV) META_new.yml $(DISTVNAME)/META.yml
 	$(NOECHO) $(ECHO) Generating META.json
 	$(NOECHO) $(ECHO) '{' > META_new.json
-	$(NOECHO) $(ECHO) '   "abstract" : "Perl extension for load and parse configuration from file",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "abstract" : "Perl extension for status constants",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "author" : [' >> META_new.json
 	$(NOECHO) $(ECHO) '      "Vladimir Roncevic <vladimir.roncevic@forbas.com>"' >> META_new.json
 	$(NOECHO) $(ECHO) '   ],' >> META_new.json
@@ -517,7 +517,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",' >> META_new.json
 	$(NOECHO) $(ECHO) '      "version" : "2"' >> META_new.json
 	$(NOECHO) $(ECHO) '   },' >> META_new.json
-	$(NOECHO) $(ECHO) '   "name" : "Configuration",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "name" : "Status",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "no_index" : {' >> META_new.json
 	$(NOECHO) $(ECHO) '      "directory" : [' >> META_new.json
 	$(NOECHO) $(ECHO) '         "t",' >> META_new.json
@@ -844,7 +844,7 @@ testdb_static :: testdb_dynamic
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
 	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="$(VERSION)">' > $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '    <ABSTRACT>Perl extension for load and parse configuration from file</ABSTRACT>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '    <ABSTRACT>Perl extension for status constants</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Vladimir Roncevic &lt;vladimir.roncevic@forbas.com&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-thread-multi-5.18" />' >> $(DISTNAME).ppd
@@ -857,7 +857,7 @@ ppd :
 
 pm_to_blib : $(FIRST_MAKEFILE) $(TO_INST_PM)
 	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', q[$(PM_FILTER)], '\''$(PERM_DIR)'\'')' -- \
-	  lib/Configuration.pm blib/lib/Configuration.pm 
+	  lib/Status.pm blib/lib/Status.pm 
 	$(NOECHO) $(TOUCH) pm_to_blib
 
 

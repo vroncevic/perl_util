@@ -70,38 +70,26 @@
 .rr rF
 .\" ========================================================================
 .\"
-.IX Title "Notification 3"
-.TH Notification 3 "2016-06-22" "perl v5.18.2" "User Contributed Perl Documentation"
+.IX Title "Status 3"
+.TH Status 3 "2016-06-22" "perl v5.18.2" "User Contributed Perl Documentation"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
 .nh
 .SH "NAME"
-Notification \- Perl extension for sending notification to admin by email
+Status \- Perl extension for status constants
 .SH "SYNOPSIS"
 .IX Header "SYNOPSIS"
-.Vb 1
-\&  use Notification;
-\&
-\&  my %notification;
-\&  my $notification_ref=\e%notification;
-\&  $notification{ADMIN_EMAIL}="admin\e@company.com"
-\&  $notification{EMAIL_FROM}="ToolName\e@hostname";
-\&  my $status = notify($notification_ref);
-\& 
-\&  if ($status == $SUCCESS) {
-\&        # true
-\&        # notify admin | user
-\&  } else {
-\&        # false
-\&        # return $NOT_SUCCESS
-\&        # or
-\&        # exit 128
-\&  }
+.Vb 5
+\&  use Status;
+\&  ...
+\&        if($status == $NOT_SUCCESS) {
+\&                exit(130);
+\&        }
 .Ve
 .SH "DESCRIPTION"
 .IX Header "DESCRIPTION"
-Sending notification to administrator by email
+Status constants for return states, or for condition statemnts
 .SS "\s-1EXPORT\s0"
 .IX Subsection "EXPORT"
 None by default.
@@ -110,7 +98,7 @@ None by default.
 Vladimir Roncevic, <vladimir.roncevic@frobas.com>
 .SH "COPYRIGHT AND LICENSE"
 .IX Header "COPYRIGHT AND LICENSE"
-Copyright (C) 2016 by www.frobas.com
+Copyright (C) 2016 by Vladimir Roncevic
 .PP
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.18.2 or,

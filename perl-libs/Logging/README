@@ -28,6 +28,7 @@ This module requires these other modules and libraries:
 	strict
 	warnings
 	Sys::Hostname
+	Status (from perl-util project)
 
 COPYRIGHT AND LICENCE
 

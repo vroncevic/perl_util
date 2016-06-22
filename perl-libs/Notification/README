@@ -29,6 +29,7 @@ This module requires these other modules and libraries:
 	warnings
 	Sys::Hostname
 	Mail::Sendmail
+	Status (from perl-util project)
 
 COPYRIGHT AND LICENCE
 

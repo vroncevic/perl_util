@@ -10,14 +10,17 @@ use 5.018002;
 use strict;
 use warnings;
 use Sys::Hostname;
+use File::Basename qw(dirname);
+use Cwd qw(abs_path);
+use lib dirname(dirname(abs_path($0))) . '/../../lib/perl5';
+use Status;
 require Exporter;
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
 our @EXPORT = qw(logging);
 our $VERSION = '1.0';
-our $SUCCESS = 0;
-our $NOT_SUCCESS = 1;
+our $TOOL_DBG="false";
 
 #
 # @brief   Write log message to App/Tool/Script log file
@@ -35,28 +38,38 @@ our $NOT_SUCCESS = 1;
 #
 # if ($status == $SUCCESS) {
 #	# true
+#	# notify admin | user
 # } else {
 #	# false
+#	# return $NOT_SUCCESS
+#	# or
+#	# exit 128
 # }
 #
 sub logging {
+	my $fcaller = (caller(0))[3];
+	my $msg="None";
     if($_[0]) {
         my $time = localtime(); 
         my $host = hostname();
-        my $fcaller = (caller(0))[3];
-        my $msg = "Checking log file";
-        print("[Info] " . $fcaller . " " . $msg . "\n");
+        $msg = "Checking log file [${$_[0]}{LOG_FILE_PATH}]";
+        if("$TOOL_DBG" eq "true") {
+			print("[Info] " . $fcaller . " " . $msg . "\n");
+        }
         unless(open(LOG_FILE, ">>${$_[0]}{LOG_FILE_PATH}")) {
             $msg = "Faild to open log file\n${$_[0]}{LOG_FILE_PATH}";
             print("[Error] " . $fcaller . " " . $msg . "\n");
             return ($NOT_SUCCESS);
         }
         print(LOG_FILE "[$time] ${$_[0]}{LOG_MESSAGE} [host: $host]\n");
+        $msg="Done";
+        if("$TOOL_DBG" eq "true") {
+			print("[Info] " . $fcaller . " " . $msg . "\n");
+        }
         close(LOG_FILE);
         return ($SUCCESS);
     }
-    my $fcaller = (caller(0))[3];
-    my $msg = "Check log-hash structure";
+    $msg = "Check log-hash structure";
     print("[Error] " . $fcaller . " " . $msg . "\n");
     return ($NOT_SUCCESS);
 }
@@ -80,8 +93,12 @@ Logging - Perl extension for write log message to App/Tool/Script log file
  
   if ($status == $Status::Constants::SUCCESS) {
  	# true
+ 	# notify admin | user
   } else {
  	# false
+ 	# return $NOT_SUCCESS
+ 	# or
+ 	# exit 128
   }
 
 =head1 DESCRIPTION

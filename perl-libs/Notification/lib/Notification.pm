@@ -11,14 +11,17 @@ use strict;
 use warnings;
 use Sys::Hostname;
 use Mail::Sendmail;
+use File::Basename qw(dirname);
+use Cwd qw(abs_path);
+use lib dirname(dirname(abs_path($0))) . '/../../lib/perl5';
+use Status;
 require Exporter;
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
 our @EXPORT = qw(notify);
 our $VERSION = '1.0';
-our $SUCCESS = 0;
-our $NOT_SUCCESS = 1;
+our $TOOL_DBG="false";
 
 #
 # @brief   Sending notification to administrator by email
@@ -36,12 +39,17 @@ our $NOT_SUCCESS = 1;
 #
 # if ($status == $SUCCESS) {
 #	# true
+#	# notify admin | user
 # } else {
 #	# false
+#	# return $NOT_SUCCESS
+#	# or
+#	# exit 128
 # }
 #
 sub notify {
 	my $fcaller = (caller(0))[3];
+	my $msg="None";
     if($_[0]) {
         my $time = localtime();
         my $host = hostname();
@@ -54,15 +62,17 @@ sub notify {
             Message => $body
         );
         if(sendmail(%mail)) {
-            my $msg = "Sent email to administrator";
-            print("[Info] " . $fcaller . " " . $msg . "\n");
+            $msg = "Sent email to administrator";
+            if("$TOOL_DBG" eq "true") {
+				print("[Info] " . $fcaller . " " . $msg . "\n");
+            }
             return ($SUCCESS);
         }
-        my $msg = "Check sendmail configuration";
+        $msg = "Check sendmail configuration";
         print("[Error] " . $fcaller . " " . $msg . "\n");
         return ($NOT_SUCCESS);
     }
-    my $msg = "Check notification-hash structure";
+    $msg = "Check notification-hash structure";
     print("[Error] " . $fcaller . " " . $msg . "\n");
     return ($NOT_SUCCESS);
 }
@@ -86,8 +96,12 @@ Notification - Perl extension for sending notification to admin by email
  
   if ($status == $SUCCESS) {
  	# true
+ 	# notify admin | user
   } else {
  	# false
+ 	# return $NOT_SUCCESS
+ 	# or
+ 	# exit 128
   }
 
 =head1 DESCRIPTION

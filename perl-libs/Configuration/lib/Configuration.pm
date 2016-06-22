@@ -10,14 +10,17 @@ use 5.018002;
 use strict;
 use warnings;
 use Sys::Hostname;
+use File::Basename qw(dirname);
+use Cwd qw(abs_path);
+use lib dirname(dirname(abs_path($0))) . '/../../lib/perl5';
+use Status;
 require Exporter;
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
 our @EXPORT = qw(readpref);
 our $VERSION = '1.0';
-our $SUCCESS = 0;
-our $NOT_SUCCESS = 1;
+our $TOOL_DBG="false";
 
 #
 # @brief   Load and parse configuration from file
@@ -34,19 +37,25 @@ our $NOT_SUCCESS = 1;
 #
 # if ($status == $SUCCESS) {
 #	# true
+#	# notify admin | user
 # } else {
 #	# false
+#	# return $NOT_SUCCESS
+#	# or
+#	# exit 128
 # }
 #
 sub readpref {
     my $filename = $_[0];
     my $fh;
     my $fcaller = (caller(0))[3];
-    my $msg = "Checking confgiuration file";
-    print("[Info] " . $fcaller . " " . $msg . "\n");
+    my $msg = "Checking config file [$filename]";
+    if("$TOOL_DBG" eq "true") {
+		print("[Info] " . $fcaller . " " . $msg . "\n");
+    }
     if(-e $filename) {
         unless(open($fh, "<", $filename)) {
-            $msg = "Faild to open confgiuration file\n$filename";
+            $msg = "Faild to open config file [$filename]";
             print("[Error] " . $fcaller . " " . $msg . "\n");
             return ($NOT_SUCCESS);
         }
@@ -57,11 +66,13 @@ sub readpref {
                 ${$_[1]}{$field} = $value;
             }
         }
-        $msg = "Loaded confgiuration file";
-        print("[Info] " . $fcaller . " " . $msg . "\n");
+        $msg = "Loaded config file [$filename]";
+        if("$TOOL_DBG" eq "true") {
+			print("[Info] " . $fcaller . " " . $msg . "\n");
+        }
         return ($SUCCESS);
     }
-    $msg = "Check confgiuration file\n$filename";
+    $msg = "Check config file [$filename]";
     print("[Error] " . $fcaller . " " . $msg . "\n");
     return ($NOT_SUCCESS);
 }
@@ -84,8 +95,12 @@ Configuration - Perl extension for load and parse configuration from file
 
   if ($status == $SUCCESS) {
 	# true
+	# notify admin | user
   } else {
 	# false
+	# return $NOT_SUCCESS
+	# or
+	# exit 128
   }
 
 =head1 DESCRIPTION
