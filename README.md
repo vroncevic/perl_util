@@ -1,7 +1,5 @@
-# perl-util
-
 perl-util (Perl scripts)
-
+================================================================================
 The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have (for
 example C compilers and installed libraries) and any other information
