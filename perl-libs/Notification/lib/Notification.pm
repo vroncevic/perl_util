@@ -6,7 +6,6 @@ package Notification;
 # @company  Frobas IT Department, www.frobas.com 2015
 # @author   Vladimir Roncevic <vladimir.roncevic@frobas.com>
 #
-use 5.018002;
 use strict;
 use warnings;
 use Sys::Hostname;
@@ -25,19 +24,21 @@ our $TOOL_DBG="false";
 
 #
 # @brief   Sending notification to administrator by email
-# @params  Values required notification-hash structure
+# @param   Value required notification structure - with data
 # @retval  Success 0, else 1
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
+# use Notification;
+# use Status;
+# 
 # my %notification;
-# my $notification_ref=\%notification;
-# $notification{ADMIN_EMAIL}="admin\@company.com"
-# $notification{EMAIL_FROM}="ToolName\@hostname";
-# my $status = notify($notification_ref);
+# $notification{ADMIN_EMAIL} = "admin\@company.com"
+# $notification{EMAIL_FROM} = "ToolName\@hostname";
+# $notification{MESSAGE} = "Simple message";
 #
-# if ($status == $SUCCESS) {
+# if(notify(\%notification) == $SUCCESS) {
 #	# true
 #	# notify admin | user
 # } else {
@@ -48,33 +49,34 @@ our $TOOL_DBG="false";
 # }
 #
 sub notify {
+	my $nref = $_[0];
 	my $fcaller = (caller(0))[3];
 	my $msg="None";
-    if($_[0]) {
-        my $time = localtime();
-        my $host = hostname();
-        my $subject = "[NOTIFICATION] Workstation ".$host;
-        my $body    = "[$time] " . ${$_[0]}{MESSAGE} . " [host: $host]\n";
-        my %mail = (
-            To      => ${$_[0]}{ADMIN_EMAIL},
-            From    => ${$_[0]}{EMAIL_FROM},
-            Subject => $subject,
-            Message => $body
-        );
-        if(sendmail(%mail)) {
-            $msg = "Sent email to administrator";
-            if("$TOOL_DBG" eq "true") {
+	if(defined($nref)) {
+		my $time = localtime();
+		my $host = hostname();
+		my $subject = "[NOTIFICATION] Workstation ".$host;
+		my $body = "[$time] " . $$nref{MESSAGE} . " [host: $host]\n";
+		my %mail = (
+			To => $$nref{ADMIN_EMAIL},
+			From => $$nref{EMAIL_FROM},
+			Subject => $subject,
+			Message => $body
+		);
+		if(sendmail(%mail)) {
+			$msg = "Sent email to administrator";
+			if("$TOOL_DBG" eq "true") {
 				print("[Info] " . $fcaller . " " . $msg . "\n");
-            }
-            return ($SUCCESS);
-        }
-        $msg = "Check sendmail configuration";
-        print("[Error] " . $fcaller . " " . $msg . "\n");
-        return ($NOT_SUCCESS);
-    }
-    $msg = "Check notification-hash structure";
-    print("[Error] " . $fcaller . " " . $msg . "\n");
-    return ($NOT_SUCCESS);
+			}
+			return ($SUCCESS);
+		}
+		$msg = "Check sendmail configuration";
+		print("[Error] " . $fcaller . " " . $msg . "\n");
+		return ($NOT_SUCCESS);
+	}
+	$msg = "Check argument [NOTIFICATION_STRUCTURE]";
+	print("[Error] " . $fcaller . " " . $msg . "\n");
+	return ($NOT_SUCCESS);
 }
 
 1;
@@ -86,23 +88,23 @@ Notification - Perl extension for sending notification to admin by email
 
 =head1 SYNOPSIS
 
-  use Notification;
+	use Notification;
+	use Status;
 
-  my %notification;
-  my $notification_ref=\%notification;
-  $notification{ADMIN_EMAIL}="admin\@company.com"
-  $notification{EMAIL_FROM}="ToolName\@hostname";
-  my $status = notify($notification_ref);
- 
-  if ($status == $SUCCESS) {
- 	# true
- 	# notify admin | user
-  } else {
- 	# false
- 	# return $NOT_SUCCESS
- 	# or
- 	# exit 128
-  }
+	my %notification;
+	$notification{ADMIN_EMAIL} = "admin\@company.com"
+	$notification{EMAIL_FROM} = "ToolName\@hostname";
+	$notification{MESSAGE} = "Simple message";
+
+	if(notify(\%notification) == $SUCCESS) {
+	# true
+	# notify admin | user
+	} else {
+	# false
+	# return $NOT_SUCCESS
+	# or
+	# exit 128
+	}
 
 =head1 DESCRIPTION
 

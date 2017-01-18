@@ -6,7 +6,6 @@ package Status;
 # @company  Frobas IT Department, www.frobas.com 2016
 # @author   Vladimir Roncevic <vladimir.roncevic@frobas.com>
 #
-use 5.018002;
 use strict;
 use warnings;
 use Exporter;
@@ -33,7 +32,6 @@ Status - Perl extension for status constants
 	if($status == $NOT_SUCCESS) {
 		exit(130);
 	}
-  
 
 =head1 DESCRIPTION
 

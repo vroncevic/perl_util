@@ -6,7 +6,6 @@ package Logging;
 # @company  Frobas IT Department, www.frobas.com 2015
 # @author   Vladimir Roncevic <vladimir.roncevic@frobas.com>
 #
-use 5.018002;
 use strict;
 use warnings;
 use Sys::Hostname;
@@ -24,19 +23,20 @@ our $TOOL_DBG="false";
 
 #
 # @brief   Write log message to App/Tool/Script log file
-# @params  Values required log-hash structure
+# @param   Value required log hash structure - with log path and log message
 # @retval  Success 0, else 1
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
+# use Logging;
+# use Status;
+# 
 # my %log;
-# my $log_ref=\%log;
 # $log{LOG_FILE_PATH}="/opt/toolname/toolname.log"
 # $log{LOG_MESSAGE}="Started toolname";
-# my $status = logging($log_ref);
 #
-# if ($status == $SUCCESS) {
+# if(logging(\%log) == $SUCCESS) {
 #	# true
 #	# notify admin | user
 # } else {
@@ -47,31 +47,32 @@ our $TOOL_DBG="false";
 # }
 #
 sub logging {
-	my $fcaller = (caller(0))[3];
+	my $fCaller = (caller(0))[3];
 	my $msg="None";
-    if($_[0]) {
-        my $time = localtime(); 
-        my $host = hostname();
-        $msg = "Checking log file [${$_[0]}{LOG_FILE_PATH}]";
-        if("$TOOL_DBG" eq "true") {
-			print("[Info] " . $fcaller . " " . $msg . "\n");
-        }
-        unless(open(LOG_FILE, ">>${$_[0]}{LOG_FILE_PATH}")) {
-            $msg = "Faild to open log file\n${$_[0]}{LOG_FILE_PATH}";
-            print("[Error] " . $fcaller . " " . $msg . "\n");
-            return ($NOT_SUCCESS);
-        }
-        print(LOG_FILE "[$time] ${$_[0]}{LOG_MESSAGE} [host: $host]\n");
-        $msg="Done";
-        if("$TOOL_DBG" eq "true") {
-			print("[Info] " . $fcaller . " " . $msg . "\n");
-        }
-        close(LOG_FILE);
-        return ($SUCCESS);
-    }
-    $msg = "Check log-hash structure";
-    print("[Error] " . $fcaller . " " . $msg . "\n");
-    return ($NOT_SUCCESS);
+	my $lref = $_[0];
+	if(defined($lref)) {
+		my $time = localtime(); 
+		my $host = hostname();
+		$msg = "Checking log file [$$lref{LOG_FILE_PATH}]";
+		if("$TOOL_DBG" eq "true") {
+			print("[Info] " . $fCaller . " " . $msg . "\n");
+		}
+		unless(open(LOG_FILE, ">>$$lref{LOG_FILE_PATH}")) {
+			$msg = "Faild to open log file\n$$lref{LOG_FILE_PATH}";
+			print("[Error] " . $fCaller . " " . $msg . "\n");
+			return ($NOT_SUCCESS);
+		}
+		print(LOG_FILE "[$time] $$lref{LOG_MESSAGE} [host: $host]\n");
+		$msg="Done";
+		if("$TOOL_DBG" eq "true") {
+			print("[Info] " . $fCaller . " " . $msg . "\n");
+		}
+		close(LOG_FILE);
+		return ($SUCCESS);
+	}
+	$msg = "Check argument [LOG_STRUCTURE]";
+	print("[Error] " . $fCaller . " " . $msg . "\n");
+	return ($NOT_SUCCESS);
 }
 
 1;
@@ -83,23 +84,22 @@ Logging - Perl extension for write log message to App/Tool/Script log file
 
 =head1 SYNOPSIS
 
-  use Logging;
+	use Logging;
+	use Status;
 
-  my %log;
-  my $log_ref=\%log;
-  $log{LOG_FILE_PATH}="/opt/toolname/toolname.log"
-  $log{LOG_MESSAGE}="Started toolname";
-  my $status = logging($log_ref);
- 
-  if ($status == $Status::Constants::SUCCESS) {
- 	# true
- 	# notify admin | user
-  } else {
- 	# false
- 	# return $NOT_SUCCESS
- 	# or
- 	# exit 128
-  }
+	my %log;
+	$log{LOG_FILE_PATH} = "/opt/toolname/toolname.log"
+	$log{LOG_MESSAGE} = "Started toolname";
+
+	if(logging(\%log) == $SUCCESS) {
+	# true
+	# notify admin | user
+	} else {
+	# false
+	# return $NOT_SUCCESS
+	# or
+	# exit 128
+	}
 
 =head1 DESCRIPTION
 
@@ -115,7 +115,7 @@ Vladimir Roncevic, E<lt>vladimir.roncevic@frobas.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2016 by www.frobas.com 
+Copyright (C) 2016 by www.frobas.com
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.18.2 or,
