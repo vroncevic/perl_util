@@ -47,9 +47,9 @@ our $TOOL_DBG="false";
 # }
 #
 sub logging {
+	my $lref = $_[0];
 	my $fCaller = (caller(0))[3];
 	my $msg="None";
-	my $lref = $_[0];
 	if(defined($lref)) {
 		my $time = localtime(); 
 		my $host = hostname();
