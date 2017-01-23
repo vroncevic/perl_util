@@ -24,7 +24,9 @@ our $TOOL_DBG="false";
 
 #
 # @brief   Load and parse configuration from CFG file
-# @params  Values required path to CFG file and configuration hash
+# @params  Values required
+# 			cfg path   - path to CFG file
+# 			preference - configuration hash structure
 # @retval  Success 0, else 1
 #
 # @usage
@@ -47,8 +49,7 @@ our $TOOL_DBG="false";
 # }
 #
 sub read_preference {
-	my $cfgPath = $_[0];
-	my $pref = $_[1];
+	my ($cfgPath, $pref) = ($_[0], $_[1]);
 	my $msg = "None";
 	if(defined($cfgPath)) {
 		$msg = "Checking CFG file [$cfgPath]";
