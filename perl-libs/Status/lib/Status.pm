@@ -27,8 +27,8 @@ Status - Perl extension for status constants
 
 =head1 SYNOPSIS
 
-  use Status;
-  ...
+	use Status;
+	...
 	if($status == $NOT_SUCCESS) {
 		exit(130);
 	}

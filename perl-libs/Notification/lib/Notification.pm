@@ -8,13 +8,15 @@ package Notification;
 #
 use strict;
 use warnings;
+use Exporter;
 use Sys::Hostname;
 use Mail::Sendmail;
 use File::Basename qw(dirname);
 use Cwd qw(abs_path);
 use lib dirname(dirname(abs_path($0))) . '/../../lib/perl5';
+use InfoDebugMessage qw(info_debug_message);
+use ErrorMessage qw(error_message);
 use Status;
-require Exporter;
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
@@ -24,7 +26,7 @@ our $TOOL_DBG="false";
 
 #
 # @brief   Sending notification to administrator by email
-# @param   Value required notification structure - with data
+# @param   Value required notification hash
 # @retval  Success 0, else 1
 #
 # @usage
@@ -50,32 +52,27 @@ our $TOOL_DBG="false";
 #
 sub notify {
 	my $nref = $_[0];
-	my $fcaller = (caller(0))[3];
-	my $msg="None";
+	my $msg = "None";
 	if(defined($nref)) {
 		my $time = localtime();
 		my $host = hostname();
-		my $subject = "[NOTIFICATION] Workstation ".$host;
+		my $subject = "[NOTIFICATION] Workstation " . $host;
 		my $body = "[$time] " . $$nref{MESSAGE} . " [host: $host]\n";
 		my %mail = (
-			To => $$nref{ADMIN_EMAIL},
-			From => $$nref{EMAIL_FROM},
-			Subject => $subject,
-			Message => $body
+			To => $$nref{ADMIN_EMAIL}, From => $$nref{EMAIL_FROM},
+			Subject => $subject, Message => $body
 		);
 		if(sendmail(%mail)) {
 			$msg = "Sent email to administrator";
-			if("$TOOL_DBG" eq "true") {
-				print("[Info] " . $fcaller . " " . $msg . "\n");
-			}
+			info_debug_message($msg);
 			return ($SUCCESS);
 		}
 		$msg = "Check sendmail configuration";
-		print("[Error] " . $fcaller . " " . $msg . "\n");
+		error_message($msg);
 		return ($NOT_SUCCESS);
 	}
-	$msg = "Check argument [NOTIFICATION_STRUCTURE]";
-	print("[Error] " . $fcaller . " " . $msg . "\n");
+	$msg = "Missing argument [NOTIFICATION_STRUCTURE]";
+	error_message($msg);
 	return ($NOT_SUCCESS);
 }
 
@@ -84,11 +81,11 @@ __END__
 
 =head1 NAME
 
-Notification - Perl extension for sending notification to admin by email
+Notification - Sending notification to administrator by email
 
 =head1 SYNOPSIS
 
-	use Notification;
+	use Notification qw(notify);
 	use Status;
 
 	my %notification;
@@ -97,13 +94,13 @@ Notification - Perl extension for sending notification to admin by email
 	$notification{MESSAGE} = "Simple message";
 
 	if(notify(\%notification) == $SUCCESS) {
-	# true
-	# notify admin | user
+		# true
+		# notify admin | user
 	} else {
-	# false
-	# return $NOT_SUCCESS
-	# or
-	# exit 128
+		# false
+		# return $NOT_SUCCESS
+		# or
+		# exit 128
 	}
 
 =head1 DESCRIPTION

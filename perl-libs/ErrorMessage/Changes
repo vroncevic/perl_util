@@ -1,0 +1,6 @@
+Revision history for Perl extension ErrorMessage.
+
+0.01  Mon Jan 23 00:49:06 2017
+	- original version; created by h2xs 1.23 with options
+		-AX -n ErrorMessage
+
