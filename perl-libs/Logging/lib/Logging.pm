@@ -10,12 +10,12 @@ use strict;
 use warnings;
 use Exporter;
 use Sys::Hostname;
-use File::Basename qw(dirname);
 use Cwd qw(abs_path);
+use File::Basename qw(dirname);
 use lib dirname(dirname(abs_path($0))) . '/../../lib/perl5';
+use Status qw($SUCCESS $NOT_SUCCESS check_status);
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
-use Status;
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
@@ -50,7 +50,7 @@ our $TOOL_DBG="false";
 #
 sub logging {
 	my $lref = $_[0];
-	my $msg="None";
+	my $msg = "None";
 	if(defined($lref)) {
 		my $time = localtime();
 		my $host = hostname();
@@ -62,7 +62,7 @@ sub logging {
 			return ($NOT_SUCCESS);
 		}
 		print(LOG_FILE "[$time] $$lref{LOG_MESSAGE} [host: $host]\n");
-		$msg="Done";
+		$msg = "Done";
 		info_debug_message($msg);
 		close(LOG_FILE);
 		return ($SUCCESS);
