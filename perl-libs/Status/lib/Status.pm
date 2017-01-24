@@ -9,8 +9,8 @@ package Status;
 use strict;
 use warnings;
 use Exporter;
-use File::Basename qw(dirname);
 use Cwd qw(abs_path);
+use File::Basename qw(dirname);
 use lib dirname(dirname(abs_path($0))) . '/../../lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
@@ -52,6 +52,8 @@ sub check_status {
 		$msg = "Checking status [hash structure]";
 		info_debug_message($msg);
 		foreach my $key (keys(%status)) {
+			$msg = "$key: $status{$key}"
+			info_debug_message($msg);
 			if($status{$key} == $SUCCESS) {
 				next;
 			} else {
