@@ -2,9 +2,9 @@ package Utils;
 #
 # @brief    Checking is scalar variable defined
 # @version  ver.1.0
-# @date     Thu Jun 16 13:17:32 2016
-# @company  Frobas IT Department, www.frobas.com 2016
-# @author   Vladimir Roncevic <vladimir.roncevic@frobas.com>
+# @date     Sun Jan 22 23:46:31 CET 2017
+# @company  None, free software to use 2017
+# @author   Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 use strict;
 use warnings;
