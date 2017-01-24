@@ -78,11 +78,11 @@ None by default.
 
 =head1 AUTHOR
 
-Vladimir Roncevic, E<lt>vladimir.roncevic@frobas.comE<gt>
+Vladimir Roncevic, E<lt>elektron.ronca@gmail.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2016 by Vladimir Roncevic
+Copyright (C) 2016 by https://github.com/vroncevic/perl-util
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.18.2 or,
