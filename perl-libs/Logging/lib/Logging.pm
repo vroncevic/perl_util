@@ -12,10 +12,11 @@ use Exporter;
 use Sys::Hostname;
 use Cwd qw(abs_path);
 use File::Basename qw(dirname);
-use lib dirname(dirname(abs_path($0))) . '/../../lib/perl5';
-use Status qw($SUCCESS $NOT_SUCCESS check_status);
+use lib dirname(dirname(abs_path($0))) . '/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
+use Utils qw(def);
+use Status;
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
@@ -32,7 +33,7 @@ our $TOOL_DBG="false";
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use Logging qw(logging);
-# use Status qw($SUCCESS $NOT_SUCCESS check_status);
+# use Status;
 # 
 # my %log;
 # $log{LOG_FILE_PATH}="/opt/toolname/toolname.log"
@@ -82,7 +83,7 @@ Logging - Write log message to App/Tool/Script LOG file
 =head1 SYNOPSIS
 
 	use Logging qw(logging);
-	use Status qw($SUCCESS $NOT_SUCCESS check_status);
+	use Status;
 
 	my %log;
 	$log{LOG_FILE_PATH} = "/opt/toolname/toolname.log"

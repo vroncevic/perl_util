@@ -11,12 +11,14 @@ use warnings;
 use Exporter;
 use Cwd qw(abs_path);
 use File::Basename qw(dirname);
-use lib dirname(dirname(abs_path($0))) . '/../../lib/perl5';
-use Status qw($SUCCESS $NOT_SUCCESS check_status);
+use lib dirname(dirname(abs_path($0))) . '/lib/perl5';
+use InfoDebugMessage qw(info_debug_message);
+use ErrorMessage qw(error_message);
+use Status;
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
-our @EXPORT_OK = ($EXPORT_TAGS{all} );
-our @EXPORT = qw(def);
+our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
+our @EXPORT = qw(def check_status);
 our $VERSION = '1.0';
 our $TOOL_DBG="false";
 
@@ -29,6 +31,7 @@ our $TOOL_DBG="false";
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use Utils qw(def);
+# use Status;
 #
 # ...
 #
@@ -50,16 +53,63 @@ sub def {
 	return ($NOT_SUCCESS);
 }
 
+#
+# @brief   Checking status [hash structure]
+# @param   Value required status hash structure
+# @retval  Success 0, else 1
+#
+# @usage
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# 
+# use Utils qw(check_status);
+# use Status;
+#
+# ...
+#
+# if(check_status(\%status) == $SUCCESS) {
+#	# true
+#	# notify admin | user
+# } else {
+#	# false
+#	# return $NOT_SUCCESS
+#	# or
+#	# exit 128
+# }
+#
+sub check_status {
+	my %status = %{$_[0]};
+	my $msg = "None";
+	if(%status) {
+		$msg = "Checking status [hash structure]";
+		info_debug_message($msg);
+		foreach my $key (keys(%status)) {
+			$msg = "$key: $status{$key}";
+			info_debug_message($msg);
+			if($status{$key} == $SUCCESS) {
+				next;
+			} else {
+				return ($NOT_SUCCESS);
+			}
+		}
+		$msg = "Done";
+		info_debug_message($msg);
+		return ($SUCCESS);
+	}
+	$msg = "Missing argument [STATUS_STRUCTURE]";
+	error_message($msg);
+	return ($NOT_SUCCESS);
+}
+
 1;
 __END__
 
 =head1 NAME
 
-Status - Checking is scalar variable defined
+Status - Checking is scalar variable defined or check status hash structure
 
 =head1 SYNOPSIS
 
-	use Utils qw(def);
+	use Utils qw(def check_status);
 	use Status;
 
 	...
@@ -68,13 +118,17 @@ Status - Checking is scalar variable defined
 		exit(130);
 	}
 
+	if(check_status(\%status) == $NOT_SUCCESS) {
+		exit(127);
+	}
+
 =head1 DESCRIPTION
 
 def - success (defined) 0, else 1
 
 =head2 EXPORT
 
-None by default.
+def - Success 0, else 1; check_status - Success 0, else 1.
 
 =head1 AUTHOR
 

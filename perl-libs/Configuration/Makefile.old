@@ -12,7 +12,7 @@
 #   MakeMaker Parameters:
 
 #     ABSTRACT_FROM => q[lib/Configuration.pm]
-#     AUTHOR => [q[Vladimir Roncevic <vladimir.roncevic@forbas.com>]]
+#     AUTHOR => [q[Vladimir Roncevic <vladimir.roncevic@frobas.com>]]
 #     BUILD_REQUIRES => {  }
 #     CONFIGURE_REQUIRES => {  }
 #     NAME => q[Configuration]
@@ -483,7 +483,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '---' > META_new.yml
 	$(NOECHO) $(ECHO) 'abstract: '\''Load and parse configuration from CFG file'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'author:' >> META_new.yml
-	$(NOECHO) $(ECHO) '  - '\''Vladimir Roncevic <vladimir.roncevic@forbas.com>'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) '  - '\''Vladimir Roncevic <vladimir.roncevic@frobas.com>'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'build_requires:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  ExtUtils::MakeMaker: '\''0'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'configure_requires:' >> META_new.yml
@@ -506,7 +506,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '{' > META_new.json
 	$(NOECHO) $(ECHO) '   "abstract" : "Load and parse configuration from CFG file",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "author" : [' >> META_new.json
-	$(NOECHO) $(ECHO) '      "Vladimir Roncevic <vladimir.roncevic@forbas.com>"' >> META_new.json
+	$(NOECHO) $(ECHO) '      "Vladimir Roncevic <vladimir.roncevic@frobas.com>"' >> META_new.json
 	$(NOECHO) $(ECHO) '   ],' >> META_new.json
 	$(NOECHO) $(ECHO) '   "dynamic_config" : 1,' >> META_new.json
 	$(NOECHO) $(ECHO) '   "generated_by" : "ExtUtils::MakeMaker version 6.98, CPAN::Meta::Converter version 2.142690",' >> META_new.json
@@ -821,7 +821,7 @@ testdb_static :: testdb_dynamic
 ppd :
 	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="$(VERSION)">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>Load and parse configuration from CFG file</ABSTRACT>' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '    <AUTHOR>Vladimir Roncevic &lt;vladimir.roncevic@forbas.com&gt;</AUTHOR>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '    <AUTHOR>Vladimir Roncevic &lt;vladimir.roncevic@frobas.com&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-gnu-thread-multi-5.20" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd

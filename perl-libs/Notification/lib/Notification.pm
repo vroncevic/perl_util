@@ -13,11 +13,11 @@ use Sys::Hostname;
 use Mail::Sendmail;
 use Cwd qw(abs_path);
 use File::Basename qw(dirname);
-use lib dirname(dirname(abs_path($0))) . '/../../lib/perl5';
-use Status qw($SUCCESS $NOT_SUCCESS check_status);
+use lib dirname(dirname(abs_path($0))) . '/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
-use Utils qw(def);
+use Utils qw(def check_status);
+use Status;
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
@@ -34,7 +34,7 @@ our $TOOL_DBG="false";
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use Notification qw(notify);
-# use Status qw($SUCCESS $NOT_SUCCESS check_status);
+# use Status;
 # 
 # my %notification;
 # $notification{ADMIN_EMAIL} = "admin\@company.com"
@@ -87,7 +87,7 @@ Notification - Sending notification to administrator by email
 =head1 SYNOPSIS
 
 	use Notification qw(notify);
-	use Status qw($SUCCESS $NOT_SUCCESS check_status);
+	use Status;
 
 	my %notification;
 	$notification{ADMIN_EMAIL} = "admin\@company.com"

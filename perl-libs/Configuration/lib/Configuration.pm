@@ -11,11 +11,11 @@ use warnings;
 use Exporter;
 use Cwd qw(abs_path);
 use File::Basename qw(dirname);
-use lib dirname(dirname(abs_path($0))) . '/../../lib/perl5';
-use Status qw($SUCCESS $NOT_SUCCESS check_status);
+use lib dirname(dirname(abs_path($0))) . '/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
 use Utils qw(def);
+use Status;
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
@@ -34,7 +34,7 @@ our $TOOL_DBG="false";
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use Configuration qw(read_preference);
-# Status qw($SUCCESS $NOT_SUCCESS check_status);
+# Status;
 # 
 # my %preferences;
 # my $cfg = dirname(dirname(abs_path($0))) . "/conf/toolname.cfg";
@@ -93,7 +93,7 @@ Configuration - Load and parse configuration from CFG file
 =head1 SYNOPSIS
 
 	use Configuration qw(read_preference);
-	Status qw($SUCCESS $NOT_SUCCESS check_status);
+	Status;
 
 	my %preferences;
 	my $cfg = dirname(dirname(abs_path($0))) . "/conf/toolname.cfg";
