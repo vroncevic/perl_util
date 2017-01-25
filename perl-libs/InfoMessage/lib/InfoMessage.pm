@@ -9,10 +9,12 @@ package InfoMessage;
 use strict;
 use warnings;
 use Exporter;
-use File::Basename qw(dirname);
 use Cwd qw(abs_path);
+use File::Basename qw(dirname);
 use lib dirname(dirname(abs_path($0))) . '/../../lib/perl5';
+use Status qw($SUCCESS $NOT_SUCCESS check_status);
 use ErrorMessage qw(error_message);
+use Utils qw(def);
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
@@ -37,10 +39,10 @@ our $TOOL_DBG="false";
 
 sub info_message {
 	my $message = $_[0];
-	if(defined($message)) {
+	if(def($message) == $SUCCESS) {
 		print("[Info] " . $message . "\n");
 	} else {
-		my $msg = "Check argument [MESSAGE_TEXT]";
+		my $msg = "Missing argument [MESSAGE_TEXT]";
 		error_message($msg);
 	}
 }
@@ -66,7 +68,7 @@ Print info message in parent function
 
 =head2 EXPORT
 
-None by default.
+info_message - None.
 
 =head1 AUTHOR
 

@@ -17,6 +17,7 @@ use lib dirname(dirname(abs_path($0))) . '/../../lib/perl5';
 use Status qw($SUCCESS $NOT_SUCCESS check_status);
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
+use Utils qw(def);
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
@@ -32,8 +33,8 @@ our $TOOL_DBG="false";
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
-# use Notification;
-# use Status;
+# use Notification qw(notify);
+# use Status qw($SUCCESS $NOT_SUCCESS check_status);
 # 
 # my %notification;
 # $notification{ADMIN_EMAIL} = "admin\@company.com"
@@ -53,7 +54,7 @@ our $TOOL_DBG="false";
 sub notify {
 	my $nref = $_[0];
 	my $msg = "None";
-	if(defined($nref)) {
+	if(def($nref) == $SUCCESS) {
 		my $time = localtime();
 		my $host = hostname();
 		my $subject = "[NOTIFICATION] Workstation " . $host;
@@ -86,7 +87,7 @@ Notification - Sending notification to administrator by email
 =head1 SYNOPSIS
 
 	use Notification qw(notify);
-	use Status;
+	use Status qw($SUCCESS $NOT_SUCCESS check_status);
 
 	my %notification;
 	$notification{ADMIN_EMAIL} = "admin\@company.com"
@@ -109,7 +110,7 @@ Sending notification to administrator by email
 
 =head2 EXPORT
 
-None by default.
+notify - Success 0, else 1.
 
 =head1 AUTHOR
 
@@ -117,7 +118,7 @@ Vladimir Roncevic, E<lt>vladimir.roncevic@frobas.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2016 by www.frobas.com 
+Copyright (C) 2016 by www.frobas.com
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.18.2 or,

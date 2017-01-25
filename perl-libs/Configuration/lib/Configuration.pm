@@ -15,6 +15,7 @@ use lib dirname(dirname(abs_path($0))) . '/../../lib/perl5';
 use Status qw($SUCCESS $NOT_SUCCESS check_status);
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
+use Utils qw(def);
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
@@ -25,15 +26,15 @@ our $TOOL_DBG="false";
 #
 # @brief   Load and parse configuration from CFG file
 # @params  Values required
-# 			cfg path   - path to CFG file
-# 			preference - configuration hash structure
+# 			cfg file path		  - path to configuration CFG file
+# 			preference structure  - configuration hash structure
 # @retval  Success 0, else 1
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use Configuration qw(read_preference);
-# use Status;
+# Status qw($SUCCESS $NOT_SUCCESS check_status);
 # 
 # my %preferences;
 # my $cfg = dirname(dirname(abs_path($0))) . "/conf/toolname.cfg";
@@ -51,7 +52,7 @@ our $TOOL_DBG="false";
 sub read_preference {
 	my ($cfgPath, $pref) = ($_[0], $_[1]);
 	my $msg = "None";
-	if(defined($cfgPath)) {
+	if(def($cfgPath) == $SUCCESS) {
 		$msg = "Checking CFG file [$cfgPath]";
 		info_debug_message($msg);
 		if(-e "$cfgPath") {
@@ -60,10 +61,11 @@ sub read_preference {
 				error_message($msg);
 				return ($NOT_SUCCESS);
 			}
-			while(my $line = <CONFIG_FILE>) {
+			my ($line, $key, $value);
+			while($line = <CONFIG_FILE>) {
 				chomp($line);
 				if(!($line =~ /^$/)) {
-					my ($key, $value) = split(/\s*=\s*/, $line);
+					($key, $value) = split(/\s*=\s*/, $line);
 					$$pref{$key} = $value;
 				}
 			}
@@ -91,7 +93,7 @@ Configuration - Load and parse configuration from CFG file
 =head1 SYNOPSIS
 
 	use Configuration qw(read_preference);
-	use Status;
+	Status qw($SUCCESS $NOT_SUCCESS check_status);
 
 	my %preferences;
 	my $cfg = dirname(dirname(abs_path($0))) . "/conf/toolname.cfg";
@@ -112,7 +114,7 @@ Load and parse configuration from CFG file
 
 =head2 EXPORT
 
-None by default.
+read_preference - Success 0, else 1.
 
 =head1 AUTHOR
 

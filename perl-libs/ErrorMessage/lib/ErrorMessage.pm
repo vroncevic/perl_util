@@ -9,6 +9,11 @@ package ErrorMessage;
 use strict;
 use warnings;
 use Exporter;
+use Cwd qw(abs_path);
+use File::Basename qw(dirname);
+use lib dirname(dirname(abs_path($0))) . '/../../lib/perl5';
+use Status qw($SUCCESS $NOT_SUCCESS check_status);
+use Utils qw(def);
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
@@ -28,17 +33,17 @@ our $TOOL_DBG="false";
 # 
 # ...
 # 
-# error_message($message);
+# error_message($msg);
 #
 
 sub error_message {
 	my $message = $_[0];
-	if(defined($message)) {
+	if(def($message) == $SUCCESS) {
 		my $fCallerParent = (caller(1))[3];
 		print("[Error] " . $fCallerParent . " " . $message . "\n");
 	} else {
 		my $fCaller = (caller(0))[3];
-		my $msg = "Check argument [MESSAGE_TEXT]";
+		my $msg = "Missing argument [MESSAGE_TEXT]";
 		print("[Error] " . $fCaller . " " . $msg . "\n");
 	}
 }
@@ -56,7 +61,7 @@ ErrorMessage - Print error message in parent function
 
 	...
 
-	error_message($message);
+	error_message($msg);
 
 =head1 DESCRIPTION
 
@@ -64,7 +69,7 @@ Print error message in parent function
 
 =head2 EXPORT
 
-None by default.
+error_message - None.
 
 =head1 AUTHOR
 

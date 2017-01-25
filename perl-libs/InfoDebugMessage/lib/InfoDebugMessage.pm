@@ -12,8 +12,9 @@ use Exporter;
 use Cwd qw(abs_path);
 use File::Basename qw(dirname);
 use lib dirname(dirname(abs_path($0))) . '/../../lib/perl5';
-use InfoMessage qw(info_message);
+use Status qw($SUCCESS $NOT_SUCCESS check_status);
 use ErrorMessage qw(error_message);
+use Utils qw(def);
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
@@ -33,18 +34,18 @@ our $TOOL_DBG="false";
 # 
 # ...
 # 
-# info_debug_message($message);
+# info_debug_message($msg);
 #
 
 sub info_debug_message {
 	my $message = $_[0];
-	if(defined($message)) {
+	if(def($message) == $SUCCESS) {
 		my $fCallerParent = (caller(1))[3];
 		if("$TOOL_DBG" eq "true") {
 			print("[Info] " . $fCallerParent . " " . $message . "\n");
 		}
 	} else {
-		my $msg = "Check argument [MESSAGE_TEXT]";
+		my $msg = "Missing argument [MESSAGE_TEXT]";
 		error_message($msg);
 	}
 }
@@ -62,7 +63,7 @@ InfoDebugMessage - Print info debug message in parent function
 
 	...
 
-	info_debug_message($message);
+	info_debug_message($msg);
 
 =head1 DESCRIPTION
 
@@ -70,7 +71,7 @@ Print info debug message in parent function
 
 =head2 EXPORT
 
-None by default.
+info_debug_message - None.
 
 =head1 AUTHOR
 

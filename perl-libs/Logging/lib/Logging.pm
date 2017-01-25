@@ -32,7 +32,7 @@ our $TOOL_DBG="false";
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use Logging qw(logging);
-# use Status;
+# use Status qw($SUCCESS $NOT_SUCCESS check_status);
 # 
 # my %log;
 # $log{LOG_FILE_PATH}="/opt/toolname/toolname.log"
@@ -51,7 +51,7 @@ our $TOOL_DBG="false";
 sub logging {
 	my $lref = $_[0];
 	my $msg = "None";
-	if(defined($lref)) {
+	if(def($lref) == $SUCCESS) {
 		my $time = localtime();
 		my $host = hostname();
 		$msg = "Checking log file [$$lref{LOG_FILE_PATH}]";
@@ -67,7 +67,7 @@ sub logging {
 		close(LOG_FILE);
 		return ($SUCCESS);
 	}
-	$msg = "Check argument [LOG_STRUCTURE]";
+	$msg = "Missing argument [LOG_STRUCTURE]";
 	error_message($msg);
 	return ($NOT_SUCCESS);
 }
@@ -82,7 +82,7 @@ Logging - Write log message to App/Tool/Script LOG file
 =head1 SYNOPSIS
 
 	use Logging qw(logging);
-	use Status;
+	use Status qw($SUCCESS $NOT_SUCCESS check_status);
 
 	my %log;
 	$log{LOG_FILE_PATH} = "/opt/toolname/toolname.log"
@@ -104,7 +104,7 @@ Write log message to App/Tool/Script LOG file
 
 =head2 EXPORT
 
-None by default.
+logging - Success 0, else 1.
 
 =head1 AUTHOR
 

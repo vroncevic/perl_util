@@ -1,6 +1,6 @@
 package Status;
 #
-# @brief    Status constants and sub
+# @brief    Status constants and checking status
 # @version  ver.1.0
 # @date     Thu Jun 16 13:17:32 2016
 # @company  Frobas IT Department, www.frobas.com 2016
@@ -31,7 +31,7 @@ our $NOT_SUCCESS = 1;
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
-# use Status::CheckStatus qw($SUCCESS $NOT_SUCCESS check_status);
+# use Status qw($SUCCESS $NOT_SUCCESS check_status);
 #
 # ...
 #
@@ -74,7 +74,7 @@ __END__
 
 =head1 NAME
 
-Status - Perl extension for status constants and sub
+Status - Status constants and checking status
 
 =head1 SYNOPSIS
 
@@ -88,11 +88,11 @@ Status - Perl extension for status constants and sub
 
 =head1 DESCRIPTION
 
-Status constants for return states, or for condition statemnts
+Status constants for return states, or for condition statemnts.
 
 =head2 EXPORT
 
-None by default.
+check_status - Success 0, else 1.
 
 =head1 AUTHOR
 
