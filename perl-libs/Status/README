@@ -30,9 +30,9 @@ This module requires these other modules and libraries:
 	Exporter
 	Cwd
 	File::Basename
-	InfoDebugMessage	https://github.com/vroncevic/perl-util
-	ErrorMessage		https://github.com/vroncevic/perl-util
-	Status				https://github.com/vroncevic/perl-util
+	InfoDebugMessage  https://github.com/vroncevic/perl-util
+	ErrorMessage      https://github.com/vroncevic/perl-util
+	Status            https://github.com/vroncevic/perl-util
 
 COPYRIGHT AND LICENCE
 

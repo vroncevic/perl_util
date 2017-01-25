@@ -12,7 +12,7 @@ use Exporter;
 use Cwd qw(abs_path);
 use File::Basename qw(dirname);
 use lib dirname(dirname(abs_path($0))) . '/../../lib/perl5';
-use Status;
+use Status qw($SUCCESS $NOT_SUCCESS check_status);
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = ($EXPORT_TAGS{all} );
