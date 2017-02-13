@@ -1,6 +1,6 @@
 package Utils;
 #
-# @brief    Checking is scalar variable defined
+# @brief    Checking is scalar variable defined and hash status
 # @version  ver.1.0
 # @date     Sun Jan 22 23:46:31 CET 2017
 # @company  None, free software to use 2017
@@ -11,16 +11,16 @@ use warnings;
 use Exporter;
 use Cwd qw(abs_path);
 use File::Basename qw(dirname);
-use lib dirname(dirname(abs_path($0))) . '/lib/perl5';
+use lib abs_path(dirname(__FILE__)) . '/../../../lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
 use Status;
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
-our @EXPORT = qw(def check_status);
+our @EXPORT = qw(def check_status check_strings);
 our $VERSION = '1.0';
-our $TOOL_DBG="false";
+our $TOOL_DBG = "false";
 
 #
 # @brief   Checking is scalar variable defined
@@ -77,17 +77,14 @@ sub def {
 # }
 #
 sub check_status {
-	my %status = %{$_[0]};
-	my $msg = "None";
+	my (%status, $msg) = (%{$_[0]}, "None");
 	if(%status) {
 		$msg = "Checking status [hash structure]";
 		info_debug_message($msg);
 		foreach my $key (keys(%status)) {
 			$msg = "$key: $status{$key}";
 			info_debug_message($msg);
-			if($status{$key} == $SUCCESS) {
-				next;
-			} else {
+			if($status{$key} == $NOT_SUCCESS) {
 				return ($NOT_SUCCESS);
 			}
 		}
@@ -100,16 +97,60 @@ sub check_status {
 	return ($NOT_SUCCESS);
 }
 
+#
+# @brief   Checking strings [hash structure]
+# @param   Value required string hash structure
+# @retval  Success 0, else 1
+#
+# @usage
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# 
+# use Utils qw(check_strings);
+# use Status;
+#
+# ...
+#
+# if(check_strings(\%strings) == $SUCCESS) {
+#	# true
+#	# notify admin | user
+# } else {
+#	# false
+#	# return $NOT_SUCCESS
+#	# or
+#	# exit 128
+# }
+#
+sub check_strings {
+	my (%strings, $msg) = (%{$_[0]}, "None");
+	if(%strings) {
+		$msg = "Checking strings [hash structure]";
+		info_debug_message($msg);
+		foreach my $key (keys(%strings)) {
+			$msg = "$key: $strings{$key}";
+			info_debug_message($msg);
+			if("$strings{$key}" eq "None") {
+				return ($NOT_SUCCESS);
+			}
+		}
+		$msg = "Done";
+		info_debug_message($msg);
+		return ($SUCCESS);
+	}
+	$msg = "Missing argument [STRING_STRUCTURE]";
+	error_message($msg);
+	return ($NOT_SUCCESS);
+}
+
 1;
 __END__
 
 =head1 NAME
 
-Status - Checking is scalar variable defined or check status hash structure
+Utils - Helpful functions
 
 =head1 SYNOPSIS
 
-	use Utils qw(def check_status);
+	use Utils qw(def check_status check_strings);
 	use Status;
 
 	...
@@ -118,17 +159,35 @@ Status - Checking is scalar variable defined or check status hash structure
 		exit(130);
 	}
 
+	my %status=(
+		S1 => $NOT_SUCCESS
+		S2 => $SUCCESS
+	)
+
 	if(check_status(\%status) == $NOT_SUCCESS) {
+		exit(127);
+	}
+
+	my %strings=(
+		S1 => "None"
+		S2 => "Check_ok"
+	)
+
+	if(check_strings(\%strings) == $NOT_SUCCESS) {
 		exit(127);
 	}
 
 =head1 DESCRIPTION
 
-def - success (defined) 0, else 1
+def           - success (defined) 0, else 1
+check_status  - check statuses from hash structure
+check_strings - check strings from hash structure
 
 =head2 EXPORT
 
-def - Success 0, else 1; check_status - Success 0, else 1.
+def           - Success 0, else 1.
+check_status  - Success 0, else 1.
+check_strings - Success 0, else 1.
 
 =head1 AUTHOR
 

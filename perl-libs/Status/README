@@ -15,11 +15,9 @@ INSTALLATION
 
 To install this module type the following:
 
-	perl Makefile.PL INSTALL_BASE=/root/scripts
+	mkdir /root/scripts/lib/perl5/
 	make
-	make test
 	make install
-	make clean
 
 DEPENDENCIES
 
@@ -28,11 +26,6 @@ This module requires these other modules and libraries:
 	strict
 	warnings
 	Exporter
-	Cwd
-	File::Basename
-	InfoDebugMessage  https://github.com/vroncevic/perl-util
-	ErrorMessage      https://github.com/vroncevic/perl-util
-	Status            https://github.com/vroncevic/perl-util
 
 COPYRIGHT AND LICENCE
 

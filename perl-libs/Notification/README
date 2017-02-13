@@ -15,11 +15,9 @@ INSTALLATION
 
 To install this module type the following:
 
-	perl Makefile.PL INSTALL_BASE=/root/scripts
+	mkdir /root/scripts/lib/perl5/
 	make
-	make test
 	make install
-	make clean
 
 DEPENDENCIES
 
@@ -32,10 +30,10 @@ This module requires these other modules and libraries:
 	File::Basename
 	Sys::Hostname
 	Mail::Sendmail
-	InfoDebugMessage  https://github.com/vroncevic/perl-util
-	ErrorMessage      https://github.com/vroncevic/perl-util
-	Utils             https://github.com/vroncevic/perl-util
-	Status            https://github.com/vroncevic/perl-util
+	InfoDebugMessage  https://github.com/vroncevic/perl_util
+	ErrorMessage      https://github.com/vroncevic/perl_util
+	Utils             https://github.com/vroncevic/perl_util
+	Status            https://github.com/vroncevic/perl_util
 
 COPYRIGHT AND LICENCE
 

@@ -11,7 +11,7 @@ use warnings;
 use Exporter;
 use Cwd qw(abs_path);
 use File::Basename qw(dirname);
-use lib dirname(dirname(abs_path($0))) . '/lib/perl5';
+use lib abs_path(dirname(__FILE__)) . '/../../../lib/perl5';
 use ErrorMessage qw(error_message);
 use Utils qw(def);
 use Status;
@@ -20,7 +20,7 @@ our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
 our @EXPORT = qw(info_message);
 our $VERSION = '1.0';
-our $TOOL_DBG="false";
+our $TOOL_DBG = "false";
 
 #
 # @brief   Print info message in parent function

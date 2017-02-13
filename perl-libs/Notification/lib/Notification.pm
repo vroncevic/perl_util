@@ -13,17 +13,17 @@ use Sys::Hostname;
 use Mail::Sendmail;
 use Cwd qw(abs_path);
 use File::Basename qw(dirname);
-use lib dirname(dirname(abs_path($0))) . '/lib/perl5';
+use lib abs_path(dirname(__FILE__)) . '/../../../lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
-use Utils qw(def check_status);
+use Utils qw(def);
 use Status;
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
 our @EXPORT = qw(notify);
 our $VERSION = '1.0';
-our $TOOL_DBG="false";
+our $TOOL_DBG = "false";
 
 #
 # @brief   Sending notification to administrator by email
@@ -52,11 +52,11 @@ our $TOOL_DBG="false";
 # }
 #
 sub notify {
-	my $nref = $_[0];
-	my $msg = "None";
+	my ($nref, $msg) = ($_[0], "None");
 	if(def($nref) == $SUCCESS) {
-		my $time = localtime();
-		my $host = hostname();
+		$msg = "Sending email to administrator";
+		info_debug_message($msg);
+		my ($time, $host) = (localtime(), hostname());
 		my $subject = "[NOTIFICATION] Workstation " . $host;
 		my $body = "[$time] " . $$nref{MESSAGE} . " [host: $host]\n";
 		my %mail = (

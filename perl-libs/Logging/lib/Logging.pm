@@ -1,6 +1,6 @@
 package Logging;
 #
-# @brief    Write log message to App/Tool/Script LOG file
+# @brief    Write log message to App/Tool/Script log file
 # @version  ver.1.0
 # @date     Mon Sep 12 22:48:32 2015
 # @company  Frobas IT Department, www.frobas.com 2015
@@ -12,7 +12,7 @@ use Exporter;
 use Sys::Hostname;
 use Cwd qw(abs_path);
 use File::Basename qw(dirname);
-use lib dirname(dirname(abs_path($0))) . '/lib/perl5';
+use lib abs_path(dirname(__FILE__)) . '/../../../lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
 use Utils qw(def);
@@ -22,10 +22,10 @@ our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
 our @EXPORT = qw(logging);
 our $VERSION = '1.0';
-our $TOOL_DBG="false";
+our $TOOL_DBG = "false";
 
 #
-# @brief   Write log message to App/Tool/Script LOG file
+# @brief   Write log message to App/Tool/Script log file
 # @param   Value required log hash
 # @retval  Success 0, else 1
 #
@@ -50,11 +50,11 @@ our $TOOL_DBG="false";
 # }
 #
 sub logging {
-	my $lref = $_[0];
-	my $msg = "None";
+	my ($lref, $msg) = ($_[0], "None");
 	if(def($lref) == $SUCCESS) {
-		my $time = localtime();
-		my $host = hostname();
+		$msg = "Write log message to LOG file";
+		info_debug_message($msg);
+		my ($time, $host) = (localtime(), hostname());
 		$msg = "Checking log file [$$lref{LOG_FILE_PATH}]";
 		info_debug_message($msg);
 		unless(open(LOG_FILE, ">>$$lref{LOG_FILE_PATH}")) {
@@ -78,7 +78,7 @@ __END__
 
 =head1 NAME
 
-Logging - Write log message to App/Tool/Script LOG file
+Logging - Write log message to App/Tool/Script log file
 
 =head1 SYNOPSIS
 
