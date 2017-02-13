@@ -10,9 +10,7 @@ use strict;
 use warnings;
 use Exporter;
 use Sys::Hostname;
-use Cwd qw(abs_path);
-use File::Basename qw(dirname);
-use lib abs_path(dirname(__FILE__)) . '/../../../lib/perl5';
+use lib '/root/scripts/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
 use Utils qw(def);
@@ -50,7 +48,8 @@ our $TOOL_DBG = "false";
 # }
 #
 sub logging {
-	my ($lref, $msg) = ($_[0], "None");
+	my $lref = $_[0];
+	my $msg = "None";
 	if(def($lref) == $SUCCESS) {
 		$msg = "Write log message to LOG file";
 		info_debug_message($msg);

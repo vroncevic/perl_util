@@ -1,5 +1,5 @@
 ---
-abstract: 'Write log message to App/Tool/Script LOG file'
+abstract: 'Write log message to App/Tool/Script log file'
 author:
   - 'Vladimir Roncevic <vladimir.roncevic@forbas.com>'
 build_requires:

@@ -1,6 +1,6 @@
 package Configuration;
 #
-# @brief    Load and parse configuration from CFG file
+# @brief    Load and parse configuration from file
 # @version  ver.1.0
 # @date     Mon Sep 12 22:48:32 2015
 # @company  Frobas IT Department, www.frobas.com 2015
@@ -35,7 +35,7 @@ our $TOOL_DBG = "false";
 # use Status;
 # 
 # my %preferences;
-# my $cfg = dirname(dirname(abs_path($0))) . "/conf/toolname.cfg";
+# my $cfg = dirname(dirname(abs_path(__FILE__))) . "/conf/toolname.cfg";
 #
 # if(read_preference($cfg, \%preferences) == $SUCCESS) {
 #	# true
@@ -57,7 +57,7 @@ sub read_preference {
 		info_debug_message($msg);
 		if(-e "$cfgPath") {
 			unless(open(CONFIG_FILE, "<", $cfgPath)) {
-				$msg = "Failed to open CFG file [$cfgPath]";
+				$msg = "Failed to open file [$cfgPath]";
 				error_message($msg);
 				return ($NOT_SUCCESS);
 			}
@@ -69,12 +69,12 @@ sub read_preference {
 					$$pref{$key} = $value;
 				}
 			}
-			$msg = "Loaded CFG file [$cfgPath]";
+			$msg = "Loaded file [$cfgPath]";
 			info_debug_message($msg);
 			close(CONFIG_FILE);
 			return ($SUCCESS);
 		}
-		$msg = "Check CFG file [$cfgPath]";
+		$msg = "Check file [$cfgPath]";
 		error_message($msg);
 		return ($NOT_SUCCESS);
 	}
@@ -88,7 +88,7 @@ __END__
 
 =head1 NAME
 
-Configuration - Load and parse configuration from CFG file
+Configuration - Load and parse configuration from file
 
 =head1 SYNOPSIS
 
@@ -96,7 +96,7 @@ Configuration - Load and parse configuration from CFG file
 	Status;
 
 	my %preferences;
-	my $cfg = dirname(dirname(abs_path($0))) . "/conf/toolname.cfg";
+	my $cfg = dirname(dirname(abs_path(__FILE__))) . "/conf/toolname.cfg";
 
 	if(read_preference($cfg, \%preferences) == $SUCCESS) {
 		# true
@@ -110,7 +110,7 @@ Configuration - Load and parse configuration from CFG file
 
 =head1 DESCRIPTION
 
-Load and parse configuration from CFG file
+Load and parse configuration from file
 
 =head2 EXPORT
 

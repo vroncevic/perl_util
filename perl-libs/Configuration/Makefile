@@ -181,10 +181,11 @@ PERL_ARCHIVE       =
 PERL_ARCHIVE_AFTER = 
 
 
-TO_INST_PM = \
+TO_INST_PM = lib/.editorconfig \
 	lib/Configuration.pm
 
-PM_TO_BLIB = \
+PM_TO_BLIB = lib/.editorconfig \
+	blib/lib/.editorconfig \
 	lib/Configuration.pm \
 	blib/lib/Configuration.pm
 
@@ -480,7 +481,7 @@ realclean purge ::  clean realclean_subdirs
 metafile : create_distdir
 	$(NOECHO) $(ECHO) Generating META.yml
 	$(NOECHO) $(ECHO) '---' > META_new.yml
-	$(NOECHO) $(ECHO) 'abstract: '\''Load and parse configuration from CFG file'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'abstract: '\''Load and parse configuration from file'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'author:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  - '\''Vladimir Roncevic <vladimir.roncevic@frobas.com>'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'build_requires:' >> META_new.yml
@@ -503,7 +504,7 @@ metafile : create_distdir
 	-$(NOECHO) $(MV) META_new.yml $(DISTVNAME)/META.yml
 	$(NOECHO) $(ECHO) Generating META.json
 	$(NOECHO) $(ECHO) '{' > META_new.json
-	$(NOECHO) $(ECHO) '   "abstract" : "Load and parse configuration from CFG file",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "abstract" : "Load and parse configuration from file",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "author" : [' >> META_new.json
 	$(NOECHO) $(ECHO) '      "Vladimir Roncevic <vladimir.roncevic@frobas.com>"' >> META_new.json
 	$(NOECHO) $(ECHO) '   ],' >> META_new.json
@@ -819,7 +820,7 @@ testdb_static :: testdb_dynamic
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
 	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="$(VERSION)">' > $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '    <ABSTRACT>Load and parse configuration from CFG file</ABSTRACT>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '    <ABSTRACT>Load and parse configuration from file</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Vladimir Roncevic &lt;vladimir.roncevic@frobas.com&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-gnu-thread-multi-5.20" />' >> $(DISTNAME).ppd
@@ -832,6 +833,7 @@ ppd :
 
 pm_to_blib : $(FIRST_MAKEFILE) $(TO_INST_PM)
 	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', q[$(PM_FILTER)], '\''$(PERM_DIR)'\'')' -- \
+	  lib/.editorconfig blib/lib/.editorconfig \
 	  lib/Configuration.pm blib/lib/Configuration.pm 
 	$(NOECHO) $(TOUCH) pm_to_blib
 

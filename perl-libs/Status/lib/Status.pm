@@ -50,7 +50,7 @@ Vladimir Roncevic, E<lt>vladimir.roncevic@frobas.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2016 by Vladimir Roncevic
+Copyright (C) 2016 by www.frobas.com
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.18.2 or,

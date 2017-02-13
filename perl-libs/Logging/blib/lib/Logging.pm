@@ -1,6 +1,6 @@
 package Logging;
 #
-# @brief    Write log message to App/Tool/Script LOG file
+# @brief    Write log message to App/Tool/Script log file
 # @version  ver.1.0
 # @date     Mon Sep 12 22:48:32 2015
 # @company  Frobas IT Department, www.frobas.com 2015
@@ -23,7 +23,7 @@ our $VERSION = '1.0';
 our $TOOL_DBG = "false";
 
 #
-# @brief   Write log message to App/Tool/Script LOG file
+# @brief   Write log message to App/Tool/Script log file
 # @param   Value required log hash
 # @retval  Success 0, else 1
 #
@@ -53,8 +53,7 @@ sub logging {
 	if(def($lref) == $SUCCESS) {
 		$msg = "Write log message to LOG file";
 		info_debug_message($msg);
-		my $time = localtime();
-		my $host = hostname();
+		my ($time, $host) = (localtime(), hostname());
 		$msg = "Checking log file [$$lref{LOG_FILE_PATH}]";
 		info_debug_message($msg);
 		unless(open(LOG_FILE, ">>$$lref{LOG_FILE_PATH}")) {
@@ -78,7 +77,7 @@ __END__
 
 =head1 NAME
 
-Logging - Write log message to App/Tool/Script LOG file
+Logging - Write log message to App/Tool/Script log file
 
 =head1 SYNOPSIS
 

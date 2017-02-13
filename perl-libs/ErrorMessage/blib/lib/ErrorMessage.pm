@@ -67,7 +67,7 @@ Print error message in parent function
 
 =head2 EXPORT
 
-error_message - None.
+error_message - print error message in parent function.
 
 =head1 AUTHOR
 
@@ -75,7 +75,7 @@ Vladimir Roncevic, E<lt>elektron.ronca@gmail.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2017 by https://github.com/vroncevic/perl-util
+Copyright (C) 2017 by https://github.com/vroncevic/perl_util
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.18.2 or,

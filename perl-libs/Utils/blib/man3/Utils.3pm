@@ -133,17 +133,17 @@
 .\" ========================================================================
 .\"
 .IX Title "Utils 3pm"
-.TH Utils 3pm "2017-01-25" "perl v5.20.2" "User Contributed Perl Documentation"
+.TH Utils 3pm "2017-02-13" "perl v5.20.2" "User Contributed Perl Documentation"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
 .nh
 .SH "NAME"
-Status \- Checking is scalar variable defined or check status hash structure
+Utils \- Helpful functions
 .SH "SYNOPSIS"
 .IX Header "SYNOPSIS"
 .Vb 2
-\&        use Utils qw(def check_status);
+\&        use Utils qw(def check_status check_strings);
 \&        use Status;
 \&
 \&        ...
@@ -151,23 +151,19 @@ Status \- Checking is scalar variable defined or check status hash structure
 \&        if(def($status) == $NOT_SUCCESS) {
 \&                exit(130);
 \&        }
-\&
-\&        if(check_status(\e%status) == $NOT_SUCCESS) {
-\&                exit(127);
-\&        }
 .Ve
 .SH "DESCRIPTION"
 .IX Header "DESCRIPTION"
 def \- success (defined) 0, else 1
 .SS "\s-1EXPORT\s0"
 .IX Subsection "EXPORT"
-def \- Success 0, else 1; check_status \- Success 0, else 1.
+def           \- Success 0, else 1.
 .SH "AUTHOR"
 .IX Header "AUTHOR"
 Vladimir Roncevic, <elektron.ronca@gmail.com>
 .SH "COPYRIGHT AND LICENSE"
 .IX Header "COPYRIGHT AND LICENSE"
-Copyright (C) 2016 by https://github.com/vroncevic/perl\-util
+Copyright (C) 2016 by https://github.com/vroncevic/perl_util
 .PP
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.18.2 or,

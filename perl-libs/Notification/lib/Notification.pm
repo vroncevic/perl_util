@@ -11,9 +11,7 @@ use warnings;
 use Exporter;
 use Sys::Hostname;
 use Mail::Sendmail;
-use Cwd qw(abs_path);
-use File::Basename qw(dirname);
-use lib abs_path(dirname(__FILE__)) . '/../../../lib/perl5';
+use lib '/root/scripts/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
 use Utils qw(def);
@@ -52,7 +50,8 @@ our $TOOL_DBG = "false";
 # }
 #
 sub notify {
-	my ($nref, $msg) = ($_[0], "None");
+	my $nref = $_[0];
+	my $msg = "None";
 	if(def($nref) == $SUCCESS) {
 		$msg = "Sending email to administrator";
 		info_debug_message($msg);

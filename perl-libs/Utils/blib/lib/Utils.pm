@@ -16,7 +16,7 @@ use Status;
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ('all' => [qw()]);
 our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
-our @EXPORT = qw(def check_status);
+our @EXPORT = qw(def);
 our $VERSION = '1.0';
 our $TOOL_DBG = "false";
 
@@ -51,63 +51,16 @@ sub def {
 	return ($NOT_SUCCESS);
 }
 
-#
-# @brief   Checking status [hash structure]
-# @param   Value required status hash structure
-# @retval  Success 0, else 1
-#
-# @usage
-# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-# 
-# use Utils qw(check_status);
-# use Status;
-#
-# ...
-#
-# if(check_status(\%status) == $SUCCESS) {
-#	# true
-#	# notify admin | user
-# } else {
-#	# false
-#	# return $NOT_SUCCESS
-#	# or
-#	# exit 128
-# }
-#
-sub check_status {
-	my %status = %{$_[0]};
-	my $msg = "None";
-	if(%status) {
-		$msg = "Checking status [hash structure]";
-		info_debug_message($msg);
-		foreach my $key (keys(%status)) {
-			$msg = "$key: $status{$key}";
-			info_debug_message($msg);
-			if($status{$key} == $SUCCESS) {
-				next;
-			} else {
-				return ($NOT_SUCCESS);
-			}
-		}
-		$msg = "Done";
-		info_debug_message($msg);
-		return ($SUCCESS);
-	}
-	$msg = "Missing argument [STATUS_STRUCTURE]";
-	error_message($msg);
-	return ($NOT_SUCCESS);
-}
-
 1;
 __END__
 
 =head1 NAME
 
-Status - Checking is scalar variable defined or check status hash structure
+Utils - Helpful functions
 
 =head1 SYNOPSIS
 
-	use Utils qw(def check_status);
+	use Utils qw(def check_status check_strings);
 	use Status;
 
 	...
@@ -116,17 +69,13 @@ Status - Checking is scalar variable defined or check status hash structure
 		exit(130);
 	}
 
-	if(check_status(\%status) == $NOT_SUCCESS) {
-		exit(127);
-	}
-
 =head1 DESCRIPTION
 
 def - success (defined) 0, else 1
 
 =head2 EXPORT
 
-def - Success 0, else 1; check_status - Success 0, else 1.
+def           - Success 0, else 1.
 
 =head1 AUTHOR
 
@@ -134,7 +83,7 @@ Vladimir Roncevic, E<lt>elektron.ronca@gmail.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2016 by https://github.com/vroncevic/perl-util
+Copyright (C) 2016 by https://github.com/vroncevic/perl_util
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.18.2 or,

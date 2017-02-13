@@ -181,10 +181,11 @@ PERL_ARCHIVE       =
 PERL_ARCHIVE_AFTER = 
 
 
-TO_INST_PM = \
+TO_INST_PM = lib/.editorconfig \
 	lib/InfoMessage.pm
 
-PM_TO_BLIB = \
+PM_TO_BLIB = lib/.editorconfig \
+	blib/lib/.editorconfig \
 	lib/InfoMessage.pm \
 	blib/lib/InfoMessage.pm
 
@@ -832,6 +833,7 @@ ppd :
 
 pm_to_blib : $(FIRST_MAKEFILE) $(TO_INST_PM)
 	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', q[$(PM_FILTER)], '\''$(PERM_DIR)'\'')' -- \
+	  lib/.editorconfig blib/lib/.editorconfig \
 	  lib/InfoMessage.pm blib/lib/InfoMessage.pm 
 	$(NOECHO) $(TOUCH) pm_to_blib
 

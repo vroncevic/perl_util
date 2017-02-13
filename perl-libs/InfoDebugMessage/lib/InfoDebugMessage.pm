@@ -9,9 +9,7 @@ package InfoDebugMessage;
 use strict;
 use warnings;
 use Exporter;
-use Cwd qw(abs_path);
-use File::Basename qw(dirname);
-use lib abs_path(dirname(__FILE__)) . '/../../../lib/perl5';
+use lib '/root/scripts/lib/perl5';
 use ErrorMessage qw(error_message);
 use Utils qw(def);
 use Status;
@@ -79,7 +77,7 @@ Vladimir Roncevic, E<lt>elektron.ronca@gmail.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2017 by https://github.com/vroncevic/perl-util
+Copyright (C) 2017 by https://github.com/vroncevic/perl_util
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.18.2 or,
