@@ -55,7 +55,8 @@ sub notify {
 	if(def($nref) == $SUCCESS) {
 		$msg = "Sending email to administrator";
 		info_debug_message($msg);
-		my ($time, $host) = (localtime(), hostname());
+		my $time = localtime();
+		my $host = hostname();
 		my $subject = "[NOTIFICATION] Workstation " . $host;
 		my $body = "[$time] " . $$nref{MESSAGE} . " [host: $host]\n";
 		my %mail = (

@@ -53,7 +53,8 @@ sub logging {
 	if(def($lref) == $SUCCESS) {
 		$msg = "Write log message to LOG file";
 		info_debug_message($msg);
-		my ($time, $host) = (localtime(), hostname());
+		my $time = localtime();
+		my $host = hostname();
 		$msg = "Checking log file [$$lref{LOG_FILE_PATH}]";
 		info_debug_message($msg);
 		unless(open(LOG_FILE, ">>$$lref{LOG_FILE_PATH}")) {
