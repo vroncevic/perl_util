@@ -14,6 +14,8 @@ INSTALLATION
 
 Follow instructions from README for each module.
 
+Set install dir: /usr/local/perl/
+
 DEPENDENCIES
 
 This module requires these other modules and libraries:
