@@ -36,7 +36,7 @@ our $TOOL_DBG = "false";
 
 sub error_message {
 	my $message = $_[0];
-	if(def($message) == $SUCCESS) {
+	if(def($message)) {
 		my $fCallerParent = (caller(1))[3];
 		print("[Error] " . $fCallerParent . " " . $message . "\n");
 	} else {

@@ -33,7 +33,7 @@ our $TOOL_DBG = "false";
 #
 # ...
 #
-# if(or_check_status(\%status) == $SUCCESS) {
+# if(or_check_status(\%status)) {
 #	# true
 #	# notify admin | user
 # } else {

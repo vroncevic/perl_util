@@ -60,7 +60,7 @@ Utils - Helpful functions
 
 =head1 SYNOPSIS
 
-	use Utils qw(def check_status check_strings);
+	use Utils qw(def);
 	use Status;
 
 	...
@@ -69,13 +69,17 @@ Utils - Helpful functions
 		exit(130);
 	}
 
+	if(def($status)) {
+		# Do operation for defined status
+	}
+
 =head1 DESCRIPTION
 
 def - success (defined) 0, else 1
 
 =head2 EXPORT
 
-def           - Success 0, else 1.
+def - Success 0, else 1.
 
 =head1 AUTHOR
 

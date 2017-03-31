@@ -37,7 +37,7 @@ our $TOOL_DBG = "false";
 # $log{LOG_FILE_PATH}="/opt/toolname/toolname.log"
 # $log{LOG_MESSAGE}="Started toolname";
 #
-# if(logging(\%log) == $SUCCESS) {
+# if(logging(\%log)) {
 #	# true
 #	# notify admin | user
 # } else {
@@ -50,7 +50,7 @@ our $TOOL_DBG = "false";
 sub logging {
 	my $lref = $_[0];
 	my $msg = "None";
-	if(def($lref) == $SUCCESS) {
+	if(def($lref)) {
 		$msg = "Write log message to LOG file";
 		info_debug_message($msg);
 		my $time = localtime();
@@ -89,7 +89,7 @@ Logging - Write log message to App/Tool/Script log file
 	$log{LOG_FILE_PATH} = "/opt/toolname/toolname.log"
 	$log{LOG_MESSAGE} = "Started toolname";
 
-	if(logging(\%log) == $SUCCESS) {
+	if(logging(\%log)) {
 		# true
 		# notify admin | user
 	} else {

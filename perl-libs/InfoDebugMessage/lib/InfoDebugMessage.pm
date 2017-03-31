@@ -37,7 +37,7 @@ our $TOOL_DBG = "false";
 
 sub info_debug_message {
 	my $message = $_[0];
-	if(def($message) == $SUCCESS) {
+	if(def($message)) {
 		my $fCallerParent = (caller(1))[3];
 		if("$TOOL_DBG" eq "true") {
 			print("[Info] " . $fCallerParent . " " . $message . "\n");

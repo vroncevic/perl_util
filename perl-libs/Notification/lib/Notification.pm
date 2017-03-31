@@ -39,7 +39,7 @@ our $TOOL_DBG = "false";
 # $notification{EMAIL_FROM} = "ToolName\@hostname";
 # $notification{MESSAGE} = "Simple message";
 #
-# if(notify(\%notification) == $SUCCESS) {
+# if(notify(\%notification)) {
 #	# true
 #	# notify admin | user
 # } else {
@@ -52,7 +52,7 @@ our $TOOL_DBG = "false";
 sub notify {
 	my $nref = $_[0];
 	my $msg = "None";
-	if(def($nref) == $SUCCESS) {
+	if(def($nref)) {
 		$msg = "Sending email to administrator";
 		info_debug_message($msg);
 		my $time = localtime();
@@ -94,7 +94,7 @@ Notification - Sending notification to administrator by email
 	$notification{EMAIL_FROM} = "ToolName\@hostname";
 	$notification{MESSAGE} = "Simple message";
 
-	if(notify(\%notification) == $SUCCESS) {
+	if(notify(\%notification)) {
 		# true
 		# notify admin | user
 	} else {

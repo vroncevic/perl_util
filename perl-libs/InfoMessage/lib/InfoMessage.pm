@@ -37,7 +37,7 @@ our $TOOL_DBG = "false";
 
 sub info_message {
 	my $message = $_[0];
-	if(def($message) == $SUCCESS) {
+	if(def($message)) {
 		print("[Info] " . $message . "\n");
 	} else {
 		my $msg = "Missing argument [MESSAGE_TEXT]";

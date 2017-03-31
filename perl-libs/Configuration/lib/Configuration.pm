@@ -37,7 +37,7 @@ our $TOOL_DBG = "false";
 # my %preferences;
 # my $cfg = dirname(dirname(abs_path(__FILE__))) . "/conf/toolname.cfg";
 #
-# if(read_preference($cfg, \%preferences) == $SUCCESS) {
+# if(read_preference($cfg, \%preferences)) {
 #	# true
 #	# notify admin | user
 # } else {
@@ -50,7 +50,7 @@ our $TOOL_DBG = "false";
 sub read_preference {
 	my ($cfgPath, $pref) = ($_[0], $_[1]);
 	my $msg = "None";
-	if(def($cfgPath) == $SUCCESS) {
+	if(def($cfgPath)) {
 		$msg = "Load and parse configuration from CFG file";
 		info_debug_message($msg);
 		$msg = "Checking CFG file [$cfgPath]";
@@ -98,7 +98,7 @@ Configuration - Load and parse configuration from file
 	my %preferences;
 	my $cfg = dirname(dirname(abs_path(__FILE__))) . "/conf/toolname.cfg";
 
-	if(read_preference($cfg, \%preferences) == $SUCCESS) {
+	if(read_preference($cfg, \%preferences)) {
 		# true
 		# notify admin | user
 	} else {

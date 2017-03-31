@@ -16,8 +16,8 @@ our @EXPORT = qw($SUCCESS $NOT_SUCCESS);
 our $VERSION = '1.0';
 our $TOOL_DBG = "false";
 
-our $SUCCESS = 0;
-our $NOT_SUCCESS = 1;
+our $SUCCESS = 1;
+our $NOT_SUCCESS = 0;
 
 1;
 __END__
@@ -34,6 +34,10 @@ Status - Status constants for checking status
 
 	if($status == $NOT_SUCCESS) {
 		exit(130);
+	}
+
+	if($SUCCESS) {
+		# Do operation
 	}
 
 =head1 DESCRIPTION

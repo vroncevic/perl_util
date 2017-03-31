@@ -33,7 +33,7 @@ our $TOOL_DBG = "false";
 #
 # ...
 #
-# if(check_strings(\%strings) == $SUCCESS) {
+# if(check_strings(\%strings)) {
 #	# true
 #	# notify admin | user
 # } else {
@@ -76,7 +76,7 @@ CheckStrings - If one string from hash structure contain None string return 1
 
 	...
 
-	if(check_strings(\%struct) == $NOT_SUCCESS) {
+	if(check_strings(\%struct)) {
 		exit(130);
 	}
 
