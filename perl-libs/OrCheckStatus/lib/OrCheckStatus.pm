@@ -6,19 +6,21 @@ package OrCheckStatus;
 # @company  Free software to use 2017
 # @author   Vladimir Roncevic <elektron.ronca@gmail.com>
 #
+use warnings FATAL => 'all';
 use strict;
-use warnings;
 use Exporter;
-use lib '/root/scripts/lib/perl5';
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+@ISA = qw(Exporter);
+$VERSION = '1.0';
+@EXPORT = qw();
+%EXPORT_TAGS = ('all' => [qw(or_check_status)]);
+@EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
+
+use lib '/usr/local/perl/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
-use Status;
-our @ISA = qw(Exporter);
-our %EXPORT_TAGS = ('all' => [qw()]);
-our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
-our @EXPORT = qw(or_check_status);
-our $VERSION = '1.0';
-our $TOOL_DBG = "false";
+use Status qw(SUCCESS NOT_SUCCESS);
+
 
 #
 # @brief   Checking status [hash structure], on is enough
@@ -29,7 +31,7 @@ our $TOOL_DBG = "false";
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use OrCheckStatus qw(or_check_status);
-# use Status;
+# use Status qw(SUCCESS NOT_SUCCESS);
 #
 # ...
 #
@@ -38,7 +40,7 @@ our $TOOL_DBG = "false";
 #	# notify admin | user
 # } else {
 #	# false
-#	# return $NOT_SUCCESS
+#	# return NOT_SUCCESS
 #	# or
 #	# exit 128
 # }
@@ -50,17 +52,17 @@ sub or_check_status {
 		$msg = "Checking status [hash structure], one is enough";
 		info_debug_message($msg);
 		foreach my $key (keys(%status)) {
-			if($status{$key} == $SUCCESS) {
+			if($status{$key} == SUCCESS) {
 				$msg = "Done";
 				info_debug_message($msg);
-				return ($SUCCESS);
+				return (SUCCESS);
 			}
 		}
-		return ($NOT_SUCCESS);
+		return (NOT_SUCCESS);
 	}
 	$msg = "Missing argument [STATUS_STRUCTURE]";
 	error_message($msg);
-	return ($NOT_SUCCESS);
+	return (NOT_SUCCESS);
 }
 
 1;
@@ -76,7 +78,7 @@ OrCheckStatus - Checking statuses collected in hash structure
 
 	...
 
-	if(or_check_status(\%status) == $NOT_SUCCESS) {
+	if(not or_check_status(\%status)) {
 		exit(130);
 	}
 

@@ -6,21 +6,22 @@ package Logging;
 # @company  Frobas IT Department, www.frobas.com 2015
 # @author   Vladimir Roncevic <vladimir.roncevic@frobas.com>
 #
+use warnings FATAL => 'all';
 use strict;
-use warnings;
-use Exporter;
 use Sys::Hostname;
-use lib '/root/scripts/lib/perl5';
+use Exporter;
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+@ISA = qw(Exporter);
+$VERSION = '1.0';
+@EXPORT = qw();
+%EXPORT_TAGS = ('all' => [qw(logging)]);
+@EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
+
+use lib '/usr/local/perl/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
 use Utils qw(def);
-use Status;
-our @ISA = qw(Exporter);
-our %EXPORT_TAGS = ('all' => [qw()]);
-our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
-our @EXPORT = qw(logging);
-our $VERSION = '1.0';
-our $TOOL_DBG = "false";
+use Status qw(SUCCESS NOT_SUCCESS);
 
 #
 # @brief   Write log message to App/Tool/Script log file
@@ -31,13 +32,13 @@ our $TOOL_DBG = "false";
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use Logging qw(logging);
-# use Status;
+# use Status qw(SUCCESS NOT_SUCCESS);
 # 
 # my %log;
 # $log{LOG_FILE_PATH}="/opt/toolname/toolname.log"
 # $log{LOG_MESSAGE}="Started toolname";
 #
-# if(logging(\%log) == $SUCCESS) {
+# if(logging(\%log)) {
 #	# true
 #	# notify admin | user
 # } else {
@@ -50,27 +51,28 @@ our $TOOL_DBG = "false";
 sub logging {
 	my $lref = $_[0];
 	my $msg = "None";
-	if(def($lref) == $SUCCESS) {
+	if(def($lref)) {
 		$msg = "Write log message to LOG file";
 		info_debug_message($msg);
 		my $time = localtime();
 		my $host = hostname();
 		$msg = "Checking log file [$$lref{LOG_FILE_PATH}]";
 		info_debug_message($msg);
-		unless(open(LOG_FILE, ">>$$lref{LOG_FILE_PATH}")) {
+		my $fh;
+		if(not open($fh, ">>", "$$lref{LOG_FILE_PATH}")) {
 			$msg = "Faild to open log file\n$$lref{LOG_FILE_PATH}";
 			error_message($msg);
-			return ($NOT_SUCCESS);
+			return (NOT_SUCCESS);
 		}
-		print(LOG_FILE "[$time] $$lref{LOG_MESSAGE} [host: $host]\n");
+		print($fh "[$time] $$lref{LOG_MESSAGE} [host: $host]\n");
 		$msg = "Done";
 		info_debug_message($msg);
-		close(LOG_FILE);
-		return ($SUCCESS);
+		close($fh);
+		return (SUCCESS);
 	}
 	$msg = "Missing argument [LOG_STRUCTURE]";
 	error_message($msg);
-	return ($NOT_SUCCESS);
+	return (NOT_SUCCESS);
 }
 
 1;
@@ -83,13 +85,13 @@ Logging - Write log message to App/Tool/Script log file
 =head1 SYNOPSIS
 
 	use Logging qw(logging);
-	use Status;
+	use Status qw(SUCCESS NOT_SUCCESS);
 
 	my %log;
 	$log{LOG_FILE_PATH} = "/opt/toolname/toolname.log"
 	$log{LOG_MESSAGE} = "Started toolname";
 
-	if(logging(\%log) == $SUCCESS) {
+	if(logging(\%log)) {
 		# true
 		# notify admin | user
 	} else {

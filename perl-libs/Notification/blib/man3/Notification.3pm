@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "Notification 3pm"
-.TH Notification 3pm "2017-02-14" "perl v5.20.2" "User Contributed Perl Documentation"
+.TH Notification 3pm "2017-03-31" "perl v5.20.2" "User Contributed Perl Documentation"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -144,14 +144,14 @@ Notification \- Sending notification to administrator by email
 .IX Header "SYNOPSIS"
 .Vb 2
 \&        use Notification qw(notify);
-\&        use Status;
+\&        use Status qw(SUCCESS NOT_SUCCESS);
 \&
 \&        my %notification;
 \&        $notification{ADMIN_EMAIL} = "admin\e@company.com"
 \&        $notification{EMAIL_FROM} = "ToolName\e@hostname";
 \&        $notification{MESSAGE} = "Simple message";
 \&
-\&        if(notify(\e%notification) == $SUCCESS) {
+\&        if(notify(\e%notification)) {
 \&                # true
 \&                # notify admin | user
 \&        } else {

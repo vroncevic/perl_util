@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "Status 3pm"
-.TH Status 3pm "2017-02-13" "perl v5.20.2" "User Contributed Perl Documentation"
+.TH Status 3pm "2017-03-31" "perl v5.20.2" "User Contributed Perl Documentation"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -143,12 +143,18 @@ Status \- Status constants for checking status
 .SH "SYNOPSIS"
 .IX Header "SYNOPSIS"
 .Vb 1
-\&        use Status;
+\&        use Status qw(SUCCESS NOT_SUCCESS);
 \&
 \&        ...
 \&
-\&        if($status == $NOT_SUCCESS) {
+\&        my $status = NOT_SUCCESS;
+\&
+\&        if($status == NOT_SUCCESS) {
 \&                exit(130);
+\&        }
+\&
+\&        if(SUCCESS) {
+\&                # True
 \&        }
 .Ve
 .SH "DESCRIPTION"

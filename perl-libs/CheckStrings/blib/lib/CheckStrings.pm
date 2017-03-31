@@ -6,19 +6,20 @@ package CheckStrings;
 # @company  Free software to use 2017
 # @author   Vladimir Roncevic <elektron.ronca@gmail.com>
 #
+use warnings FATAL => 'all';
 use strict;
-use warnings;
 use Exporter;
-use lib '/root/scripts/lib/perl5';
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+$VERSION = '1.0';
+@ISA = qw(Exporter);
+@EXPORT = qw();
+%EXPORT_TAGS = ('all' => [qw(check_strings)]);
+@EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
+
+use lib '/usr/local/perl/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
-use Status;
-our @ISA = qw(Exporter);
-our %EXPORT_TAGS = ('all' => [qw()]);
-our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
-our @EXPORT = qw(check_strings);
-our $VERSION = '1.0';
-our $TOOL_DBG = "false";
+use Status qw(SUCCESS NOT_SUCCESS);
 
 #
 # @brief   Checking strings [hash structure]
@@ -29,11 +30,11 @@ our $TOOL_DBG = "false";
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use CheckStrings qw(check_strings);
-# use Status;
+# use Status qw(SUCCESS NOT_SUCCESS);
 #
 # ...
 #
-# if(check_strings(\%strings) == $SUCCESS) {
+# if(check_strings(\%strings)) {
 #	# true
 #	# notify admin | user
 # } else {
@@ -51,16 +52,16 @@ sub check_strings {
 		info_debug_message($msg);
 		foreach my $key (keys(%strings)) {
 			if("$strings{$key}" eq "None") {
-				return ($NOT_SUCCESS);
+				return (NOT_SUCCESS);
 			}
 		}
 		$msg = "Done";
 		info_debug_message($msg);
-		return ($SUCCESS);
+		return (SUCCESS);
 	}
 	$msg = "Missing argument [STRING_STRUCTURE]";
 	error_message($msg);
-	return ($NOT_SUCCESS);
+	return (NOT_SUCCESS);
 }
 
 1;
@@ -76,8 +77,8 @@ CheckStrings - If one string from hash structure contain None string return 1
 
 	...
 
-	if(check_strings(\%struct) == $NOT_SUCCESS) {
-		exit(130);
+	if(check_strings(\%struct)) {
+		# True
 	}
 
 =head1 DESCRIPTION

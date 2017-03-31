@@ -6,20 +6,21 @@ package Configuration;
 # @company  Frobas IT Department, www.frobas.com 2015
 # @author   Vladimir Roncevic <vladimir.roncevic@frobas.com>
 #
+use warnings FATAL => 'all';
 use strict;
-use warnings;
 use Exporter;
-use lib '/root/scripts/lib/perl5';
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+@ISA = qw(Exporter);
+$VERSION = '1.0';
+@EXPORT = qw();
+%EXPORT_TAGS = ('all' => [qw(read_preference)]);
+@EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
+
+use lib '/usr/local/perl/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
 use Utils qw(def);
-use Status;
-our @ISA = qw(Exporter);
-our %EXPORT_TAGS = ('all' => [qw()]);
-our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
-our @EXPORT = qw(read_preference);
-our $VERSION = '1.0';
-our $TOOL_DBG = "false";
+use Status qw(SUCCESS NOT_SUCCESS);
 
 #
 # @brief   Load and parse configuration from CFG file
@@ -56,13 +57,14 @@ sub read_preference {
 		$msg = "Checking CFG file [$cfgPath]";
 		info_debug_message($msg);
 		if(-e "$cfgPath") {
-			unless(open(CONFIG_FILE, "<", $cfgPath)) {
+			my $fh;
+			if(not open($fh, "<", $cfgPath)) {
 				$msg = "Failed to open file [$cfgPath]";
 				error_message($msg);
-				return ($NOT_SUCCESS);
+				return (NOT_SUCCESS);
 			}
 			my ($line, $key, $value);
-			while($line = <CONFIG_FILE>) {
+			while($line = <$fh>) {
 				chomp($line);
 				if(!($line =~ /^$/)) {
 					($key, $value) = split(/\s*=\s*/, $line);
@@ -71,16 +73,16 @@ sub read_preference {
 			}
 			$msg = "Loaded file [$cfgPath]";
 			info_debug_message($msg);
-			close(CONFIG_FILE);
-			return ($SUCCESS);
+			close($fh);
+			return (SUCCESS);
 		}
 		$msg = "Check file [$cfgPath]";
 		error_message($msg);
-		return ($NOT_SUCCESS);
+		return (NOT_SUCCESS);
 	}
 	$msg = "Missing argument [CONFIGURATION_FILE]";
 	error_message($msg);
-	return ($NOT_SUCCESS);
+	return (NOT_SUCCESS);
 }
 
 1;

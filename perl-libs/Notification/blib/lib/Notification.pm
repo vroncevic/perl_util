@@ -6,22 +6,23 @@ package Notification;
 # @company  Frobas IT Department, www.frobas.com 2015
 # @author   Vladimir Roncevic <vladimir.roncevic@frobas.com>
 #
+use warnings FATAL => 'all';
 use strict;
-use warnings;
 use Exporter;
 use Sys::Hostname;
 use Mail::Sendmail;
-use lib '/root/scripts/lib/perl5';
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+@ISA = qw(Exporter);
+$VERSION = '1.0';
+@EXPORT = qw();
+%EXPORT_TAGS = ('all' => [qw(notify)]);
+@EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
+
+use lib '/usr/local/perl/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
 use Utils qw(def);
-use Status;
-our @ISA = qw(Exporter);
-our %EXPORT_TAGS = ('all' => [qw()]);
-our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
-our @EXPORT = qw(notify);
-our $VERSION = '1.0';
-our $TOOL_DBG = "false";
+use Status qw(SUCCESS NOT_SUCCESS);
 
 #
 # @brief   Sending notification to administrator by email
@@ -39,7 +40,7 @@ our $TOOL_DBG = "false";
 # $notification{EMAIL_FROM} = "ToolName\@hostname";
 # $notification{MESSAGE} = "Simple message";
 #
-# if(notify(\%notification) == $SUCCESS) {
+# if(notify(\%notification)) {
 #	# true
 #	# notify admin | user
 # } else {
@@ -52,7 +53,7 @@ our $TOOL_DBG = "false";
 sub notify {
 	my $nref = $_[0];
 	my $msg = "None";
-	if(def($nref) == $SUCCESS) {
+	if(def($nref)) {
 		$msg = "Sending email to administrator";
 		info_debug_message($msg);
 		my $time = localtime();
@@ -66,15 +67,15 @@ sub notify {
 		if(sendmail(%mail)) {
 			$msg = "Sent email to administrator";
 			info_debug_message($msg);
-			return ($SUCCESS);
+			return (SUCCESS);
 		}
 		$msg = "Check sendmail configuration";
 		error_message($msg);
-		return ($NOT_SUCCESS);
+		return (NOT_SUCCESS);
 	}
 	$msg = "Missing argument [NOTIFICATION_STRUCTURE]";
 	error_message($msg);
-	return ($NOT_SUCCESS);
+	return (NOT_SUCCESS);
 }
 
 1;
@@ -87,14 +88,14 @@ Notification - Sending notification to administrator by email
 =head1 SYNOPSIS
 
 	use Notification qw(notify);
-	use Status;
+	use Status qw(SUCCESS NOT_SUCCESS);
 
 	my %notification;
 	$notification{ADMIN_EMAIL} = "admin\@company.com"
 	$notification{EMAIL_FROM} = "ToolName\@hostname";
 	$notification{MESSAGE} = "Simple message";
 
-	if(notify(\%notification) == $SUCCESS) {
+	if(notify(\%notification)) {
 		# true
 		# notify admin | user
 	} else {

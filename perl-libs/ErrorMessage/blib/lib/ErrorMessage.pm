@@ -6,18 +6,19 @@ package ErrorMessage;
 # @company  None, free software to use 2017
 # @author   Vladimir Roncevic <elektron.ronca@gmail.com>
 #
+use warnings FATAL => 'all';
 use strict;
-use warnings;
 use Exporter;
-use lib '/root/scripts/lib/perl5';
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+$VERSION = '1.0';
+@ISA = qw(Exporter);
+@EXPORT = qw();
+%EXPORT_TAGS = ('all' => [qw(error_message)]);
+@EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
+
+use lib '/usr/local/perl/lib/perl5';
 use Utils qw(def);
-use Status;
-our @ISA = qw(Exporter);
-our %EXPORT_TAGS = ('all' => [qw()]);
-our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
-our @EXPORT = qw(error_message);
-our $VERSION = '1.0';
-our $TOOL_DBG = "false";
+use Status qw(SUCCESS NOT_SUCCESS);
 
 #
 # @brief   Print error message in parent function
@@ -33,10 +34,9 @@ our $TOOL_DBG = "false";
 # 
 # error_message($msg);
 #
-
 sub error_message {
 	my $message = $_[0];
-	if(def($message) == $SUCCESS) {
+	if(def($message)) {
 		my $fCallerParent = (caller(1))[3];
 		print("[Error] " . $fCallerParent . " " . $message . "\n");
 	} else {

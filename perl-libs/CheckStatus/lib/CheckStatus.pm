@@ -7,18 +7,20 @@ package CheckStatus;
 # @author   Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 use strict;
-use warnings;
+use warnings FATAL => 'all';
+use strict;
 use Exporter;
-use lib '/root/scripts/lib/perl5';
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+$VERSION = '1.0';
+@ISA = qw(Exporter);
+@EXPORT = qw();
+%EXPORT_TAGS = ('all' => [qw(check_status)]);
+@EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
+
+use lib '/usr/local/perl/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
-use Status;
-our @ISA = qw(Exporter);
-our %EXPORT_TAGS = ('all' => [qw()]);
-our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
-our @EXPORT = qw(check_status);
-our $VERSION = '1.0';
-our $TOOL_DBG = "false";
+use Status qw(SUCCESS NOT_SUCCESS);
 
 #
 # @brief   Checking status [hash structure]
@@ -27,9 +29,9 @@ our $TOOL_DBG = "false";
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-# 
+#
 # use CheckStatus qw(check_status);
-# use Status;
+# use UtilStatus;
 #
 # ...
 #
@@ -50,17 +52,17 @@ sub check_status {
 		$msg = "Checking status [hash structure]";
 		info_debug_message($msg);
 		foreach my $key (keys(%status)) {
-			if($status{$key} == $NOT_SUCCESS) {
-				return ($NOT_SUCCESS);
+			if($status{$key} == NOT_SUCCESS) {
+				return (NOT_SUCCESS);
 			}
 		}
 		$msg = "Done";
 		info_debug_message($msg);
-		return ($SUCCESS);
+		return (SUCCESS);
 	}
 	$msg = "Missing argument [STATUS_STRUCTURE]";
 	error_message($msg);
-	return ($NOT_SUCCESS);
+	return (NOT_SUCCESS);
 }
 
 1;
@@ -76,8 +78,10 @@ CheckStatus - Checking statuses collected in hash structure
 
 	...
 
-	if(check_status(\%status) == $NOT_SUCCESS) {
-		exit(130);
+	if(check_status(\%status)) {
+		# True
+	} else {
+		# False
 	}
 
 =head1 DESCRIPTION

@@ -6,18 +6,20 @@ package InfoDebugMessage;
 # @company  None, free software to use 2017
 # @author   Vladimir Roncevic <elektron.ronca@gmail.com>
 #
+use warnings FATAL => 'all';
 use strict;
-use warnings;
 use Exporter;
-use lib '/root/scripts/lib/perl5';
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+$VERSION = '1.0';
+@ISA = qw(Exporter);
+%EXPORT_TAGS = ('all' => [qw(info_debug_message)]);
+@EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
+@EXPORT = qw();
+
+use lib '/usr/local/perl/lib/perl5';
 use ErrorMessage qw(error_message);
 use Utils qw(def);
-use Status;
-our @ISA = qw(Exporter);
-our %EXPORT_TAGS = ('all' => [qw()]);
-our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
-our @EXPORT = qw(info_debug_message);
-our $VERSION = '1.0';
+use Status qw(SUCCESS NOT_SUCCESS);
 our $TOOL_DBG = "false";
 
 #

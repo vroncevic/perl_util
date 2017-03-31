@@ -6,19 +6,18 @@ package Utils;
 # @company  None, free software to use 2017
 # @author   Vladimir Roncevic <elektron.ronca@gmail.com>
 #
+use warnings FATAL => 'all';
 use strict;
-use warnings;
 use Exporter;
-use lib '/root/scripts/lib/perl5';
-use InfoDebugMessage qw(info_debug_message);
-use ErrorMessage qw(error_message);
-use Status;
-our @ISA = qw(Exporter);
-our %EXPORT_TAGS = ('all' => [qw()]);
-our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
-our @EXPORT = qw(def);
-our $VERSION = '1.0';
-our $TOOL_DBG = "false";
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+$VERSION = '1.0';
+@ISA = qw(Exporter);
+@EXPORT = qw();
+%EXPORT_TAGS = ('all' => [qw(def)]);
+@EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
+
+use lib '/usr/local/perl/lib/perl5';
+use Status qw(SUCCESS NOT_SUCCESS);
 
 #
 # @brief   Checking is scalar variable defined
@@ -29,16 +28,16 @@ our $TOOL_DBG = "false";
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use Utils qw(def);
-# use Status;
+# use Status qw(SUCCESS NOT_SUCCESS);
 #
 # ...
 #
-# if(def($status) == $SUCCESS) {
+# if(def($status)) {
 #	# true
 #	# notify admin | user
 # } else {
 #	# false
-#	# return $NOT_SUCCESS
+#	# return NOT_SUCCESS
 #	# or
 #	# exit 128
 # }
@@ -46,9 +45,9 @@ our $TOOL_DBG = "false";
 sub def {
 	my $var = $_[0];
 	if(defined($var)) {
-		return ($SUCCESS);
+		return (SUCCESS);
 	}
-	return ($NOT_SUCCESS);
+	return (NOT_SUCCESS);
 }
 
 1;
@@ -60,13 +59,17 @@ Utils - Helpful functions
 
 =head1 SYNOPSIS
 
-	use Utils qw(def check_status check_strings);
-	use Status;
+	use Utils qw(def);
+	use UtilStatus qw(SUCCESS NOT_SUCCESS);
 
 	...
 
-	if(def($status) == $NOT_SUCCESS) {
+	if(def($status) == NOT_SUCCESS) {
 		exit(130);
+	}
+
+	if(def($status)) {
+		# Do operation for status SUCCESS
 	}
 
 =head1 DESCRIPTION
@@ -75,7 +78,7 @@ def - success (defined) 0, else 1
 
 =head2 EXPORT
 
-def           - Success 0, else 1.
+def - Success 0, else 1.
 
 =head1 AUTHOR
 

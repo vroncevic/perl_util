@@ -7,17 +7,18 @@ package Status;
 # @author   Vladimir Roncevic <vladimir.roncevic@frobas.com>
 #
 use strict;
-use warnings;
+use warnings FATAL => 'all';
+use strict;
 use Exporter;
-our @ISA = qw(Exporter);
-our %EXPORT_TAGS = ('all' => [qw()]);
-our @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
-our @EXPORT = qw($SUCCESS $NOT_SUCCESS);
-our $VERSION = '1.0';
-our $TOOL_DBG = "false";
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+$VERSION = '1.0';
+@ISA = qw(Exporter);
+@EXPORT = qw();
+%EXPORT_TAGS = ('all' => [qw(SUCCESS NOT_SUCCESS)]);
+@EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
 
-our $SUCCESS = 1;
-our $NOT_SUCCESS = 0;
+use constant SUCCESS => 1;
+use constant NOT_SUCCESS => 0;
 
 1;
 __END__
@@ -28,16 +29,18 @@ Status - Status constants for checking status
 
 =head1 SYNOPSIS
 
-	use Status;
+	use Status qw(SUCCESS NOT_SUCCESS);
 
 	...
 
-	if($status == $NOT_SUCCESS) {
+	my $status = NOT_SUCCESS;
+
+	if($status == NOT_SUCCESS) {
 		exit(130);
 	}
 
-	if($SUCCESS) {
-		# Do operation
+	if(SUCCESS) {
+		# True
 	}
 
 =head1 DESCRIPTION
