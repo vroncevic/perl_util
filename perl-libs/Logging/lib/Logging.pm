@@ -21,7 +21,7 @@ use lib '/usr/local/perl/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
 use Utils qw(def);
-use Status qw(SUCCESS NOT_SUCCESS);
+use Status qw(:all);
 
 #
 # @brief   Write log message to App/Tool/Script log file
@@ -32,7 +32,7 @@ use Status qw(SUCCESS NOT_SUCCESS);
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use Logging qw(logging);
-# use Status qw(SUCCESS NOT_SUCCESS);
+# use Status qw(:all);
 # 
 # my %log;
 # $log{LOG_FILE_PATH}="/opt/toolname/toolname.log"
@@ -85,7 +85,7 @@ Logging - Write log message to App/Tool/Script log file
 =head1 SYNOPSIS
 
 	use Logging qw(logging);
-	use Status qw(SUCCESS NOT_SUCCESS);
+	use Status qw(:all);
 
 	my %log;
 	$log{LOG_FILE_PATH} = "/opt/toolname/toolname.log"

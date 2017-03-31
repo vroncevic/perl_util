@@ -19,7 +19,7 @@ $VERSION = '1.0';
 use lib '/usr/local/perl/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
-use Status qw(SUCCESS NOT_SUCCESS);
+use Status qw(:all);
 
 #
 # @brief   Checking strings [hash structure]
@@ -30,7 +30,7 @@ use Status qw(SUCCESS NOT_SUCCESS);
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use CheckStrings qw(check_strings);
-# use Status qw(SUCCESS NOT_SUCCESS);
+# use Status qw(:all);
 #
 # ...
 #
@@ -74,6 +74,7 @@ CheckStrings - If one string from hash structure contain None string return 1
 =head1 SYNOPSIS
 
 	use CheckStrings qw(check_strings);
+	use Status qw(:all);
 
 	...
 

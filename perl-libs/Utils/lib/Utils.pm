@@ -17,7 +17,7 @@ $VERSION = '1.0';
 @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
 
 use lib '/usr/local/perl/lib/perl5';
-use Status qw(SUCCESS NOT_SUCCESS);
+use Status qw(:all);
 
 #
 # @brief   Checking is scalar variable defined
@@ -28,7 +28,7 @@ use Status qw(SUCCESS NOT_SUCCESS);
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use Utils qw(def);
-# use Status qw(SUCCESS NOT_SUCCESS);
+# use Status qw(:all);
 #
 # ...
 #
@@ -60,7 +60,7 @@ Utils - Helpful functions
 =head1 SYNOPSIS
 
 	use Utils qw(def);
-	use UtilStatus qw(SUCCESS NOT_SUCCESS);
+	use Status qw(:all);
 
 	...
 

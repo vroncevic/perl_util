@@ -29,7 +29,7 @@ Status - Status constants for checking status
 
 =head1 SYNOPSIS
 
-	use Status qw(SUCCESS NOT_SUCCESS);
+	use Status qw(:all);
 
 	...
 

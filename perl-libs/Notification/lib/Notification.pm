@@ -22,7 +22,7 @@ use lib '/usr/local/perl/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
 use Utils qw(def);
-use Status qw(SUCCESS NOT_SUCCESS);
+use Status qw(:all);
 
 #
 # @brief   Sending notification to administrator by email
@@ -33,7 +33,7 @@ use Status qw(SUCCESS NOT_SUCCESS);
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use Notification qw(notify);
-# use Status;
+# use Status qw(:all);
 # 
 # my %notification;
 # $notification{ADMIN_EMAIL} = "admin\@company.com"
@@ -88,7 +88,7 @@ Notification - Sending notification to administrator by email
 =head1 SYNOPSIS
 
 	use Notification qw(notify);
-	use Status qw(SUCCESS NOT_SUCCESS);
+	use Status qw(:all);
 
 	my %notification;
 	$notification{ADMIN_EMAIL} = "admin\@company.com"

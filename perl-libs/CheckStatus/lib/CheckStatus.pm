@@ -20,7 +20,7 @@ $VERSION = '1.0';
 use lib '/usr/local/perl/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
-use Status qw(SUCCESS NOT_SUCCESS);
+use Status qw(:all);
 
 #
 # @brief   Checking status [hash structure]
@@ -31,7 +31,7 @@ use Status qw(SUCCESS NOT_SUCCESS);
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 #
 # use CheckStatus qw(check_status);
-# use UtilStatus;
+# use Status qw(:all);
 #
 # ...
 #
@@ -75,6 +75,7 @@ CheckStatus - Checking statuses collected in hash structure
 =head1 SYNOPSIS
 
 	use CheckStatus qw(check_status);
+	use Status qw(:all);
 
 	...
 

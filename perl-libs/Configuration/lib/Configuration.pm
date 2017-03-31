@@ -20,7 +20,7 @@ use lib '/usr/local/perl/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
 use Utils qw(def);
-use Status qw(SUCCESS NOT_SUCCESS);
+use Status qw(:all);
 
 #
 # @brief   Load and parse configuration from CFG file
@@ -33,7 +33,7 @@ use Status qw(SUCCESS NOT_SUCCESS);
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use Configuration qw(read_preference);
-# use Status;
+# use Status qw(:all);
 # 
 # my %preferences;
 # my $cfg = dirname(dirname(abs_path(__FILE__))) . "/conf/toolname.cfg";
@@ -95,7 +95,7 @@ Configuration - Load and parse configuration from file
 =head1 SYNOPSIS
 
 	use Configuration qw(read_preference);
-	Status;
+	use Status qw(:all);
 
 	my %preferences;
 	my $cfg = dirname(dirname(abs_path(__FILE__))) . "/conf/toolname.cfg";
