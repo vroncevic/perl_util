@@ -15,7 +15,8 @@ INSTALLATION
 
 To install this module type the following:
 
-	mkdir /root/scripts/lib/perl5/
+	mkdir /usr/local/perl/
+	perl Makefile.PL INSTALL_BASE=/usr/local/perl/
 	make
 	make install
 
