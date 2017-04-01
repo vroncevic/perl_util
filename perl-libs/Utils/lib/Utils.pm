@@ -22,7 +22,7 @@ use Status qw(:all);
 #
 # @brief   Checking is scalar variable defined
 # @param   Value required scalar variable
-# @retval  Success 0, else 1
+# @retval  Success 1, else 0
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -74,7 +74,7 @@ Utils - Helpful functions
 
 =head1 DESCRIPTION
 
-def - success (defined) 0, else 1
+def - success (defined) 1, else 0.
 
 =head2 EXPORT
 

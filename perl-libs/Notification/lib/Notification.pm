@@ -27,7 +27,7 @@ use Status qw(:all);
 #
 # @brief   Sending notification to administrator by email
 # @param   Value required notification hash
-# @retval  Success 0, else 1
+# @retval  Success 1, else 0
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -111,7 +111,7 @@ Sending notification to administrator by email
 
 =head2 EXPORT
 
-notify - Success 0, else 1.
+notify - Success 1, else 0.
 
 =head1 AUTHOR
 

@@ -24,7 +24,7 @@ use Status qw(:all);
 #
 # @brief   Checking strings [hash structure]
 # @param   Value required string hash structure
-# @retval  Success 0, else 1
+# @retval  Success 1, else 0
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -88,7 +88,7 @@ Status constants for return states, or for condition statemnts.
 
 =head2 EXPORT
 
-check_strings - return 0 if strings are ne to None, else return 1.
+check_strings - return 1 if strings are ne to None, else return 0.
 
 =head1 AUTHOR
 

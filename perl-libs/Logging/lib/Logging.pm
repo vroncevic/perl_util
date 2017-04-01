@@ -26,7 +26,7 @@ use Status qw(:all);
 #
 # @brief   Write log message to App/Tool/Script log file
 # @param   Value required log hash
-# @retval  Success 0, else 1
+# @retval  Success 1, else 0
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -107,7 +107,7 @@ Write log message to App/Tool/Script LOG file
 
 =head2 EXPORT
 
-logging - Success 0, else 1.
+logging - Success 1, else 0.
 
 =head1 AUTHOR
 

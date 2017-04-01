@@ -25,7 +25,7 @@ use Status qw(:all);
 #
 # @brief   Checking status [hash structure]
 # @param   Value required status hash structure
-# @retval  Success 0, else 1
+# @retval  Success 1, else 0
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -91,7 +91,7 @@ check_status - check elements of hash structure, success return 0, else 1.
 
 =head2 EXPORT
 
-check_status - function check hash structure.
+check_status - for success return 1, else 0.
 
 =head1 AUTHOR
 

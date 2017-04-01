@@ -27,7 +27,7 @@ use Status qw(:all);
 # @params  Values required
 # 			cfg file path		  - path to configuration CFG file
 # 			preference structure  - configuration hash structure
-# @retval  Success 0, else 1
+# @retval  Success 1, else 0
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -116,7 +116,7 @@ Load and parse configuration from file
 
 =head2 EXPORT
 
-read_preference - Success 0, else 1.
+read_preference - Success 1, else 0.
 
 =head1 AUTHOR
 
