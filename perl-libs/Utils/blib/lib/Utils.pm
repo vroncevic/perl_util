@@ -17,21 +17,22 @@ $VERSION = '1.0';
 @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
 
 use lib '/usr/local/perl/lib/perl5';
-use Status qw(SUCCESS NOT_SUCCESS);
+use Status qw(:all);
 
 #
 # @brief   Checking is scalar variable defined
 # @param   Value required scalar variable
-# @retval  Success 0, else 1
+# @retval  Success 1, else 0
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use Utils qw(def);
-# use Status qw(SUCCESS NOT_SUCCESS);
+# use Status qw(:all);
 #
 # ...
 #
+# my $status;
 # if(def($status)) {
 #	# true
 #	# notify admin | user
@@ -55,16 +56,17 @@ __END__
 
 =head1 NAME
 
-Utils - Helpful functions
+Utils - Helpful functions.
 
 =head1 SYNOPSIS
 
 	use Utils qw(def);
-	use UtilStatus qw(SUCCESS NOT_SUCCESS);
+	use Status qw(:all);
 
 	...
 
-	if(def($status) == NOT_SUCCESS) {
+	my $status;
+	if(not def($status)) {
 		exit(130);
 	}
 
@@ -74,11 +76,11 @@ Utils - Helpful functions
 
 =head1 DESCRIPTION
 
-def - success (defined) 0, else 1
+Checking is variable defined.
 
 =head2 EXPORT
 
-def - Success 0, else 1.
+def - success (defined) return 1, else return 0.
 
 =head1 AUTHOR
 

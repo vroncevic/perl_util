@@ -21,18 +21,18 @@ use lib '/usr/local/perl/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
 use Utils qw(def);
-use Status qw(SUCCESS NOT_SUCCESS);
+use Status qw(:all);
 
 #
 # @brief   Write log message to App/Tool/Script log file
 # @param   Value required log hash
-# @retval  Success 0, else 1
+# @retval  Success 1, else 0
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use Logging qw(logging);
-# use Status qw(SUCCESS NOT_SUCCESS);
+# use Status qw(:all);
 # 
 # my %log;
 # $log{LOG_FILE_PATH}="/opt/toolname/toolname.log"
@@ -43,7 +43,7 @@ use Status qw(SUCCESS NOT_SUCCESS);
 #	# notify admin | user
 # } else {
 #	# false
-#	# return $NOT_SUCCESS
+#	# return NOT_SUCCESS
 #	# or
 #	# exit 128
 # }
@@ -85,7 +85,7 @@ Logging - Write log message to App/Tool/Script log file
 =head1 SYNOPSIS
 
 	use Logging qw(logging);
-	use Status qw(SUCCESS NOT_SUCCESS);
+	use Status qw(:all);
 
 	my %log;
 	$log{LOG_FILE_PATH} = "/opt/toolname/toolname.log"
@@ -96,7 +96,7 @@ Logging - Write log message to App/Tool/Script log file
 		# notify admin | user
 	} else {
 		# false
-		# return $NOT_SUCCESS
+		# return NOT_SUCCESS
 		# or
 		# exit 128
 	}
@@ -107,7 +107,7 @@ Write log message to App/Tool/Script LOG file
 
 =head2 EXPORT
 
-logging - Success 0, else 1.
+logging - Success return 1, else return 0.
 
 =head1 AUTHOR
 

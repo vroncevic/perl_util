@@ -6,7 +6,6 @@ package CheckStatus;
 # @company  Free software to use 2017
 # @author   Vladimir Roncevic <elektron.ronca@gmail.com>
 #
-use strict;
 use warnings FATAL => 'all';
 use strict;
 use Exporter;
@@ -40,7 +39,7 @@ use Status qw(:all);
 #	# notify admin | user
 # } else {
 #	# false
-#	# return $NOT_SUCCESS
+#	# return NOT_SUCCESS
 #	# or
 #	# exit 128
 # }
@@ -70,7 +69,7 @@ __END__
 
 =head1 NAME
 
-CheckStatus - Checking statuses collected in hash structure
+CheckStatus - Checking statuses collected in hash structure.
 
 =head1 SYNOPSIS
 
@@ -80,14 +79,18 @@ CheckStatus - Checking statuses collected in hash structure
 	...
 
 	if(check_status(\%status)) {
-		# True
+		# true
+		# notify admin | user
 	} else {
-		# False
+		# false
+		# return NOT_SUCCESS
+		# or
+		# exit 128
 	}
 
 =head1 DESCRIPTION
 
-check_status - check elements of hash structure, success return 0, else 1.
+check_status - check elements of hash structure.
 
 =head2 EXPORT
 

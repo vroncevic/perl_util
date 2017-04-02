@@ -24,7 +24,7 @@ use Status qw(:all);
 #
 # @brief   Checking strings [hash structure]
 # @param   Value required string hash structure
-# @retval  Success 0, else 1
+# @retval  Success 1, else 0
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -39,7 +39,7 @@ use Status qw(:all);
 #	# notify admin | user
 # } else {
 #	# false
-#	# return $NOT_SUCCESS
+#	# return NOT_SUCCESS
 #	# or
 #	# exit 128
 # }
@@ -69,7 +69,7 @@ __END__
 
 =head1 NAME
 
-CheckStrings - If one string from hash structure contain None string return 1
+CheckStrings - If one string from hash structure contain None string return 0.
 
 =head1 SYNOPSIS
 
@@ -78,8 +78,14 @@ CheckStrings - If one string from hash structure contain None string return 1
 
 	...
 
-	if(check_strings(\%struct)) {
-		# True
+	if(check_strings(\%strings)) {
+		# true
+		# notify admin | user
+	} else {
+		# false
+		# return NOT_SUCCESS
+		# or
+		# exit 128
 	}
 
 =head1 DESCRIPTION
@@ -88,7 +94,7 @@ Status constants for return states, or for condition statemnts.
 
 =head2 EXPORT
 
-check_strings - return 0 if strings are ne to None, else return 1.
+check_strings - return 1 if strings are ne to None, else return 0.
 
 =head1 AUTHOR
 

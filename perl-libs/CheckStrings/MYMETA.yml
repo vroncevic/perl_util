@@ -1,5 +1,5 @@
 ---
-abstract: 'If one string from hash structure contain None string return 1'
+abstract: 'If one string from hash structure contain None string return 0.'
 author:
   - 'Vladimir Roncevic <elektron.ronca@gmail.com>'
 build_requires:

@@ -133,13 +133,13 @@
 .\" ========================================================================
 .\"
 .IX Title "CheckStatus 3pm"
-.TH CheckStatus 3pm "2017-03-31" "perl v5.20.2" "User Contributed Perl Documentation"
+.TH CheckStatus 3pm "2017-04-02" "perl v5.20.2" "User Contributed Perl Documentation"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
 .nh
 .SH "NAME"
-CheckStatus \- Checking statuses collected in hash structure
+CheckStatus \- Checking statuses collected in hash structure.
 .SH "SYNOPSIS"
 .IX Header "SYNOPSIS"
 .Vb 2
@@ -149,17 +149,21 @@ CheckStatus \- Checking statuses collected in hash structure
 \&        ...
 \&
 \&        if(check_status(\e%status)) {
-\&                # True
+\&                # true
+\&                # notify admin | user
 \&        } else {
-\&                # False
+\&                # false
+\&                # return NOT_SUCCESS
+\&                # or
+\&                # exit 128
 \&        }
 .Ve
 .SH "DESCRIPTION"
 .IX Header "DESCRIPTION"
-check_status \- check elements of hash structure, success return 0, else 1.
+check_status \- check elements of hash structure.
 .SS "\s-1EXPORT\s0"
 .IX Subsection "EXPORT"
-check_status \- function check hash structure.
+check_status \- for success return 1, else 0.
 .SH "AUTHOR"
 .IX Header "AUTHOR"
 Vladimir Roncevic, <elektron.ronca@gmail.com>

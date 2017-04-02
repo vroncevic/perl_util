@@ -133,22 +133,23 @@
 .\" ========================================================================
 .\"
 .IX Title "Utils 3pm"
-.TH Utils 3pm "2017-03-31" "perl v5.20.2" "User Contributed Perl Documentation"
+.TH Utils 3pm "2017-04-02" "perl v5.20.2" "User Contributed Perl Documentation"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
 .nh
 .SH "NAME"
-Utils \- Helpful functions
+Utils \- Helpful functions.
 .SH "SYNOPSIS"
 .IX Header "SYNOPSIS"
 .Vb 2
 \&        use Utils qw(def);
-\&        use UtilStatus qw(SUCCESS NOT_SUCCESS);
+\&        use Status qw(:all);
 \&
 \&        ...
 \&
-\&        if(def($status) == NOT_SUCCESS) {
+\&        my $status;
+\&        if(not def($status)) {
 \&                exit(130);
 \&        }
 \&
@@ -158,10 +159,10 @@ Utils \- Helpful functions
 .Ve
 .SH "DESCRIPTION"
 .IX Header "DESCRIPTION"
-def \- success (defined) 0, else 1
+Checking is variable defined.
 .SS "\s-1EXPORT\s0"
 .IX Subsection "EXPORT"
-def \- Success 0, else 1.
+def \- success (defined) return 1, else return 0.
 .SH "AUTHOR"
 .IX Header "AUTHOR"
 Vladimir Roncevic, <elektron.ronca@gmail.com>

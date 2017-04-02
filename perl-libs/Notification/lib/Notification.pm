@@ -45,7 +45,7 @@ use Status qw(:all);
 #	# notify admin | user
 # } else {
 #	# false
-#	# return $NOT_SUCCESS
+#	# return NOT_SUCCESS
 #	# or
 #	# exit 128
 # }
@@ -83,7 +83,7 @@ __END__
 
 =head1 NAME
 
-Notification - Sending notification to administrator by email
+Notification - Sending notification to administrator by email.
 
 =head1 SYNOPSIS
 
@@ -100,18 +100,18 @@ Notification - Sending notification to administrator by email
 		# notify admin | user
 	} else {
 		# false
-		# return $NOT_SUCCESS
+		# return NOT_SUCCESS
 		# or
 		# exit 128
 	}
 
 =head1 DESCRIPTION
 
-Sending notification to administrator by email
+Sending notification to administrator by email.
 
 =head2 EXPORT
 
-notify - Success 1, else 0.
+notify - Success return 1, else return 0.
 
 =head1 AUTHOR
 

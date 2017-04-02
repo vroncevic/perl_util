@@ -32,6 +32,7 @@ use Status qw(:all);
 #
 # ...
 #
+# my $status;
 # if(def($status)) {
 #	# true
 #	# notify admin | user
@@ -55,7 +56,7 @@ __END__
 
 =head1 NAME
 
-Utils - Helpful functions
+Utils - Helpful functions.
 
 =head1 SYNOPSIS
 
@@ -64,7 +65,8 @@ Utils - Helpful functions
 
 	...
 
-	if(def($status) == NOT_SUCCESS) {
+	my $status;
+	if(not def($status)) {
 		exit(130);
 	}
 
@@ -74,11 +76,11 @@ Utils - Helpful functions
 
 =head1 DESCRIPTION
 
-def - success (defined) 1, else 0.
+Checking is variable defined.
 
 =head2 EXPORT
 
-def - Success 0, else 1.
+def - success (defined) return 1, else return 0.
 
 =head1 AUTHOR
 

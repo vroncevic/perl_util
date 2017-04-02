@@ -22,18 +22,18 @@ use lib '/usr/local/perl/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
 use Utils qw(def);
-use Status qw(SUCCESS NOT_SUCCESS);
+use Status qw(:all);
 
 #
 # @brief   Sending notification to administrator by email
 # @param   Value required notification hash
-# @retval  Success 0, else 1
+# @retval  Success 1, else 0
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use Notification qw(notify);
-# use Status;
+# use Status qw(:all);
 # 
 # my %notification;
 # $notification{ADMIN_EMAIL} = "admin\@company.com"
@@ -45,7 +45,7 @@ use Status qw(SUCCESS NOT_SUCCESS);
 #	# notify admin | user
 # } else {
 #	# false
-#	# return $NOT_SUCCESS
+#	# return NOT_SUCCESS
 #	# or
 #	# exit 128
 # }
@@ -83,12 +83,12 @@ __END__
 
 =head1 NAME
 
-Notification - Sending notification to administrator by email
+Notification - Sending notification to administrator by email.
 
 =head1 SYNOPSIS
 
 	use Notification qw(notify);
-	use Status qw(SUCCESS NOT_SUCCESS);
+	use Status qw(:all);
 
 	my %notification;
 	$notification{ADMIN_EMAIL} = "admin\@company.com"
@@ -100,18 +100,18 @@ Notification - Sending notification to administrator by email
 		# notify admin | user
 	} else {
 		# false
-		# return $NOT_SUCCESS
+		# return NOT_SUCCESS
 		# or
 		# exit 128
 	}
 
 =head1 DESCRIPTION
 
-Sending notification to administrator by email
+Sending notification to administrator by email.
 
 =head2 EXPORT
 
-notify - Success 0, else 1.
+notify - Success return 1, else return 0.
 
 =head1 AUTHOR
 

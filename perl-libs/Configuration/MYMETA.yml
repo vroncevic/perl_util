@@ -1,5 +1,5 @@
 ---
-abstract: 'Load and parse configuration from file'
+abstract: 'Load and parse configuration from file.'
 author:
   - 'Vladimir Roncevic <vladimir.roncevic@frobas.com>'
 build_requires:

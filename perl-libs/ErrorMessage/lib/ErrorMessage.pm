@@ -18,7 +18,7 @@ $VERSION = '1.0';
 
 use lib '/usr/local/perl/lib/perl5';
 use Utils qw(def);
-use Status qw(SUCCESS NOT_SUCCESS);
+use Status qw(:all);
 
 #
 # @brief   Print error message in parent function
@@ -29,9 +29,10 @@ use Status qw(SUCCESS NOT_SUCCESS);
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use ErrorMessage qw(error_message);
-# 
+#
 # ...
-# 
+#
+# my $msg = "Some message";
 # error_message($msg);
 #
 sub error_message {
@@ -51,7 +52,7 @@ __END__
 
 =head1 NAME
 
-ErrorMessage - Print error message in parent function
+ErrorMessage - Print error message in parent function.
 
 =head1 SYNOPSIS
 
@@ -59,11 +60,12 @@ ErrorMessage - Print error message in parent function
 
 	...
 
+	my $msg = "Some message";
 	error_message($msg);
 
 =head1 DESCRIPTION
 
-Print error message in parent function
+Print error message in parent function.
 
 =head2 EXPORT
 

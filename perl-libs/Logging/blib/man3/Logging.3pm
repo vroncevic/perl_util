@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "Logging 3pm"
-.TH Logging 3pm "2017-03-31" "perl v5.20.2" "User Contributed Perl Documentation"
+.TH Logging 3pm "2017-04-02" "perl v5.20.2" "User Contributed Perl Documentation"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -144,7 +144,7 @@ Logging \- Write log message to App/Tool/Script log file
 .IX Header "SYNOPSIS"
 .Vb 2
 \&        use Logging qw(logging);
-\&        use Status qw(SUCCESS NOT_SUCCESS);
+\&        use Status qw(:all);
 \&
 \&        my %log;
 \&        $log{LOG_FILE_PATH} = "/opt/toolname/toolname.log"
@@ -155,7 +155,7 @@ Logging \- Write log message to App/Tool/Script log file
 \&                # notify admin | user
 \&        } else {
 \&                # false
-\&                # return $NOT_SUCCESS
+\&                # return NOT_SUCCESS
 \&                # or
 \&                # exit 128
 \&        }
@@ -165,7 +165,7 @@ Logging \- Write log message to App/Tool/Script log file
 Write log message to App/Tool/Script \s-1LOG\s0 file
 .SS "\s-1EXPORT\s0"
 .IX Subsection "EXPORT"
-logging \- Success 0, else 1.
+logging \- Success return 1, else return 0.
 .SH "AUTHOR"
 .IX Header "AUTHOR"
 Vladimir Roncevic, <vladimir.roncevic@frobas.com>

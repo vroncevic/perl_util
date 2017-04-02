@@ -6,7 +6,6 @@ package Status;
 # @company  Frobas IT Department, www.frobas.com 2016
 # @author   Vladimir Roncevic <vladimir.roncevic@frobas.com>
 #
-use strict;
 use warnings FATAL => 'all';
 use strict;
 use Exporter;
@@ -25,7 +24,7 @@ __END__
 
 =head1 NAME
 
-Status - Status constants for checking status
+Status - Status constants for checking status.
 
 =head1 SYNOPSIS
 
@@ -49,7 +48,7 @@ Status constants for return states, or for condition statemnts.
 
 =head2 EXPORT
 
-SUCCESS and NOT_SUCCESS constants.
+SUCCESS (1) and NOT_SUCCESS (0) constants.
 
 =head1 AUTHOR
 

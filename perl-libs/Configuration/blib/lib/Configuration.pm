@@ -20,20 +20,20 @@ use lib '/usr/local/perl/lib/perl5';
 use InfoDebugMessage qw(info_debug_message);
 use ErrorMessage qw(error_message);
 use Utils qw(def);
-use Status qw(SUCCESS NOT_SUCCESS);
+use Status qw(:all);
 
 #
 # @brief   Load and parse configuration from CFG file
 # @params  Values required
 # 			cfg file path		  - path to configuration CFG file
 # 			preference structure  - configuration hash structure
-# @retval  Success 0, else 1
+# @retval  Success 1, else 0
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use Configuration qw(read_preference);
-# use Status;
+# use Status qw(:all);
 # 
 # my %preferences;
 # my $cfg = dirname(dirname(abs_path(__FILE__))) . "/conf/toolname.cfg";
@@ -43,7 +43,7 @@ use Status qw(SUCCESS NOT_SUCCESS);
 #	# notify admin | user
 # } else {
 #	# false
-#	# return $NOT_SUCCESS
+#	# return NOT_SUCCESS
 #	# or
 #	# exit 128
 # }
@@ -90,12 +90,12 @@ __END__
 
 =head1 NAME
 
-Configuration - Load and parse configuration from file
+Configuration - Load and parse configuration from file.
 
 =head1 SYNOPSIS
 
 	use Configuration qw(read_preference);
-	Status;
+	use Status qw(:all);
 
 	my %preferences;
 	my $cfg = dirname(dirname(abs_path(__FILE__))) . "/conf/toolname.cfg";
@@ -105,18 +105,18 @@ Configuration - Load and parse configuration from file
 		# notify admin | user
 	} else {
 		# false
-		# return $NOT_SUCCESS
+		# return NOT_SUCCESS
 		# or
 		# exit 128
 	}
 
 =head1 DESCRIPTION
 
-Load and parse configuration from file
+Load and parse configuration from CFG file.
 
 =head2 EXPORT
 
-read_preference - Success 0, else 1.
+read_preference - Success return 1, else return 0.
 
 =head1 AUTHOR
 

@@ -133,18 +133,18 @@
 .\" ========================================================================
 .\"
 .IX Title "Configuration 3pm"
-.TH Configuration 3pm "2017-03-31" "perl v5.20.2" "User Contributed Perl Documentation"
+.TH Configuration 3pm "2017-04-02" "perl v5.20.2" "User Contributed Perl Documentation"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
 .nh
 .SH "NAME"
-Configuration \- Load and parse configuration from file
+Configuration \- Load and parse configuration from file.
 .SH "SYNOPSIS"
 .IX Header "SYNOPSIS"
 .Vb 2
 \&        use Configuration qw(read_preference);
-\&        Status;
+\&        use Status qw(:all);
 \&
 \&        my %preferences;
 \&        my $cfg = dirname(dirname(abs_path(_\|_FILE_\|_))) . "/conf/toolname.cfg";
@@ -154,17 +154,17 @@ Configuration \- Load and parse configuration from file
 \&                # notify admin | user
 \&        } else {
 \&                # false
-\&                # return $NOT_SUCCESS
+\&                # return NOT_SUCCESS
 \&                # or
 \&                # exit 128
 \&        }
 .Ve
 .SH "DESCRIPTION"
 .IX Header "DESCRIPTION"
-Load and parse configuration from file
+Load and parse configuration from \s-1CFG\s0 file.
 .SS "\s-1EXPORT\s0"
 .IX Subsection "EXPORT"
-read_preference \- Success 0, else 1.
+read_preference \- Success return 1, else return 0.
 .SH "AUTHOR"
 .IX Header "AUTHOR"
 Vladimir Roncevic, <vladimir.roncevic@frobas.com>

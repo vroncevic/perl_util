@@ -12,14 +12,14 @@ use Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 $VERSION = '1.0';
 @ISA = qw(Exporter);
+@EXPORT = qw();
 %EXPORT_TAGS = ('all' => [qw(info_debug_message)]);
 @EXPORT_OK = (@{$EXPORT_TAGS{'all'}});
-@EXPORT = qw();
 
 use lib '/usr/local/perl/lib/perl5';
 use ErrorMessage qw(error_message);
 use Utils qw(def);
-use Status qw(SUCCESS NOT_SUCCESS);
+use Status qw(:all);
 our $TOOL_DBG = "false";
 
 #
@@ -31,9 +31,10 @@ our $TOOL_DBG = "false";
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use InfoDebugMessage qw(info_debug_message);
-# 
+#
 # ...
-# 
+#
+# my $msg = "Some message";
 # info_debug_message($msg);
 #
 
@@ -55,7 +56,7 @@ __END__
 
 =head1 NAME
 
-InfoDebugMessage - Print info debug message in parent function
+InfoDebugMessage - Print info debug message in parent function.
 
 =head1 SYNOPSIS
 
@@ -63,15 +64,16 @@ InfoDebugMessage - Print info debug message in parent function
 
 	...
 
+	my $msg = "Some message";
 	info_debug_message($msg);
 
 =head1 DESCRIPTION
 
-Print info debug message in parent function
+Print info debug message in parent function.
 
 =head2 EXPORT
 
-info_debug_message - None.
+info_debug_message - Print info debug message in parent function.
 
 =head1 AUTHOR
 

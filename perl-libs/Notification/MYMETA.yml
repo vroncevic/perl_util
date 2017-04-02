@@ -1,5 +1,5 @@
 ---
-abstract: 'Sending notification to administrator by email'
+abstract: 'Sending notification to administrator by email.'
 author:
   - 'Vladimir Roncevic <vladimir.roncevic@forbas.com>'
 build_requires:

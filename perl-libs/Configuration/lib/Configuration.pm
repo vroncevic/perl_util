@@ -43,7 +43,7 @@ use Status qw(:all);
 #	# notify admin | user
 # } else {
 #	# false
-#	# return $NOT_SUCCESS
+#	# return NOT_SUCCESS
 #	# or
 #	# exit 128
 # }
@@ -90,7 +90,7 @@ __END__
 
 =head1 NAME
 
-Configuration - Load and parse configuration from file
+Configuration - Load and parse configuration from file.
 
 =head1 SYNOPSIS
 
@@ -105,18 +105,18 @@ Configuration - Load and parse configuration from file
 		# notify admin | user
 	} else {
 		# false
-		# return $NOT_SUCCESS
+		# return NOT_SUCCESS
 		# or
 		# exit 128
 	}
 
 =head1 DESCRIPTION
 
-Load and parse configuration from file
+Load and parse configuration from CFG file.
 
 =head2 EXPORT
 
-read_preference - Success 1, else 0.
+read_preference - Success return 1, else return 0.
 
 =head1 AUTHOR
 

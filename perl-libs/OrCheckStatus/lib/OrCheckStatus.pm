@@ -23,7 +23,7 @@ use Status qw(:all);
 
 
 #
-# @brief   Checking status [hash structure], on is enough
+# @brief   Checking status [hash structure], only one NOT_SUCCESS is enough
 # @param   Value required status hash structure
 # @retval  Success 1, else 0
 #
@@ -35,6 +35,7 @@ use Status qw(:all);
 #
 # ...
 #
+# my %status = (VAR1 => 1, VAR2 => 0);
 # if(or_check_status(\%status)) {
 #	# true
 #	# notify admin | user
@@ -49,16 +50,18 @@ sub or_check_status {
 	my %status = %{$_[0]};
 	my $msg = "None";
 	if(%status) {
-		$msg = "Checking status [hash structure], one is enough";
+		$msg = "Checking status [hash structure]";
 		info_debug_message($msg);
 		foreach my $key (keys(%status)) {
-			if($status{$key} == SUCCESS) {
+			if($status{$key} == NOT_SUCCESS) {
 				$msg = "Done";
 				info_debug_message($msg);
-				return (SUCCESS);
+				return (NOT_SUCCESS);
 			}
 		}
-		return (NOT_SUCCESS);
+		$msg = "Done";
+		info_debug_message($msg);
+		return (SUCCESS);
 	}
 	$msg = "Missing argument [STATUS_STRUCTURE]";
 	error_message($msg);
@@ -70,7 +73,7 @@ __END__
 
 =head1 NAME
 
-OrCheckStatus - Checking statuses collected in hash structure
+OrCheckStatus - Checking statuses collected in hash structure.
 
 =head1 SYNOPSIS
 
@@ -79,17 +82,18 @@ OrCheckStatus - Checking statuses collected in hash structure
 
 	...
 
+	my %status = (VAR1 => 1, VAR2 => 0);
 	if(not or_check_status(\%status)) {
 		exit(130);
 	}
 
 =head1 DESCRIPTION
 
-or_check_status - check elements of hash structure, success return 0, else 1.
+or_check_status - check elements of hash structure.
 
 =head2 EXPORT
 
-or_check_status - Success 1, else 0.
+or_check_status - Success return 1, else return 0.
 
 =head1 AUTHOR
 

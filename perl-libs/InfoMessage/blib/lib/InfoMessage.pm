@@ -6,8 +6,8 @@ package InfoMessage;
 # @company  None, free software to use 2017
 # @author   Vladimir Roncevic <elektron.ronca@gmail.com>
 #
+use warnings FATAL => 'all';
 use strict;
-use warnings FATAL => 'all';;
 use Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 $VERSION = '1.0';
@@ -19,7 +19,7 @@ $VERSION = '1.0';
 use lib '/usr/local/perl/lib/perl5';
 use ErrorMessage qw(error_message);
 use Utils qw(def);
-use Status qw(SUCCESS NOT_SUCCESS);
+use Status qw(:all);
 
 #
 # @brief   Print info message in parent function
@@ -30,10 +30,11 @@ use Status qw(SUCCESS NOT_SUCCESS);
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # 
 # use InfoMessage qw(info_message);
-# 
+#
 # ...
-# 
-# info_message($message);
+#
+# my $msg = "Some message";
+# info_message($msg);
 #
 sub info_message {
 	my $message = $_[0];
@@ -50,7 +51,7 @@ __END__
 
 =head1 NAME
 
-InfoMessage - Print info message in parent function
+InfoMessage - Print info message in parent function.
 
 =head1 SYNOPSIS
 
@@ -58,15 +59,16 @@ InfoMessage - Print info message in parent function
 
 	...
 
-	info_message($message);
+	my $msg = "Some message";
+	info_message($msg);
 
 =head1 DESCRIPTION
 
-Print info message in parent function
+Print info message in parent function.
 
 =head2 EXPORT
 
-info_message - None.
+info_message - Print info message in parent function.
 
 =head1 AUTHOR
 

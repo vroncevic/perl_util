@@ -43,7 +43,7 @@ use Status qw(:all);
 #	# notify admin | user
 # } else {
 #	# false
-#	# return $NOT_SUCCESS
+#	# return NOT_SUCCESS
 #	# or
 #	# exit 128
 # }
@@ -96,7 +96,7 @@ Logging - Write log message to App/Tool/Script log file
 		# notify admin | user
 	} else {
 		# false
-		# return $NOT_SUCCESS
+		# return NOT_SUCCESS
 		# or
 		# exit 128
 	}
@@ -107,7 +107,7 @@ Write log message to App/Tool/Script LOG file
 
 =head2 EXPORT
 
-logging - Success 1, else 0.
+logging - Success return 1, else return 0.
 
 =head1 AUTHOR
 

@@ -1,5 +1,5 @@
 {
-   "abstract" : "Status constants for checking status",
+   "abstract" : "Status constants for checking status.",
    "author" : [
       "Vladimir Roncevic <vladimir.roncevic@forbas.com>"
    ],
