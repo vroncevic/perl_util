@@ -28,8 +28,8 @@ This module requires these other modules and libraries:
 	warnings
 	Exporter
 	InfoDebugMessage  https://github.com/vroncevic/perl_util
-	ErrorMessage      https://github.com/vroncevic/perl_util
-	Status            https://github.com/vroncevic/perl_util
+	ErrorMessage	  https://github.com/vroncevic/perl_util
+	Status			https://github.com/vroncevic/perl_util
 
 COPYRIGHT AND LICENCE
 

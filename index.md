@@ -1,4 +1,4 @@
-perl-util (Perl scripts)
+# perl-util (Perl packages)
 
 The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have (for
@@ -11,17 +11,17 @@ archive can use it get an idea of the modules uses. It is usually a
 good idea to provide version information here so that people can
 decide whether fixes for the module are worth downloading.
 
-INSTALLATION
+### INSTALLATION
 
 Follow instructions from README for each module.
 
-DEPENDENCIES
+### DEPENDENCIES
 
 This module requires these other modules and libraries:
 
 Check requires from README for each module. 
 
-COPYRIGHT AND LICENCE
+### COPYRIGHT AND LICENCE
 
 Copyright (C) 2016 by www.frobas.com
 

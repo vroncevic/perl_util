@@ -28,19 +28,19 @@ Status - Status constants for checking status.
 
 =head1 SYNOPSIS
 
-	use Status qw(:all);
+    use Status qw(:all);
 
-	...
+    ...
 
-	my $status = NOT_SUCCESS;
+    my $status = NOT_SUCCESS;
 
-	if($status == NOT_SUCCESS) {
-		exit(130);
-	}
+    if($status == NOT_SUCCESS) {
+        exit(130);
+    }
 
-	if(SUCCESS) {
-		# True
-	}
+    if(SUCCESS) {
+        # True
+    }
 
 =head1 DESCRIPTION
 

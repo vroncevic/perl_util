@@ -1,7 +1,7 @@
 #
-# @brief    Write log message to App/Tool/Script log file
+# @brief	Write log message to App/Tool/Script log file
 # @version  ver.1.0
-# @date     Mon Sep 12 22:48:32 2015
+# @date	 Mon Sep 12 22:48:32 2015
 # @company  Frobas IT Department, www.frobas.com 2015
 # @author   Vladimir Roncevic <vladimir.roncevic@frobas.com>
 #

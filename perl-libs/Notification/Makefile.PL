@@ -1,7 +1,7 @@
 #
-# @brief    Sending notification to administrator by email
+# @brief	Sending notification to administrator by email
 # @version  ver.1.0
-# @date     Sun Sep 13 11:15:32 2015
+# @date	 Sun Sep 13 11:15:32 2015
 # @company  Frobas IT Department, www.frobas.com 2015
 # @author   Vladimir Roncevic <vladimir.roncevic@frobas.com>
 #

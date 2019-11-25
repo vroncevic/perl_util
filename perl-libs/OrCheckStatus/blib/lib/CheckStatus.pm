@@ -34,33 +34,33 @@ our $TOOL_DBG = "false";
 # ...
 #
 # if(check_status(\%status) == $SUCCESS) {
-#	# true
-#	# notify admin | user
+#    # true
+#    # notify admin | user
 # } else {
-#	# false
-#	# return $NOT_SUCCESS
-#	# or
-#	# exit 128
+#    # false
+#    # return $NOT_SUCCESS
+#    # or
+#    # exit 128
 # }
 #
 sub check_status {
-	my %status = %{$_[0]};
-	my $msg = "None";
-	if(%status) {
-		$msg = "Checking status [hash structure]";
-		info_debug_message($msg);
-		foreach my $key (keys(%status)) {
-			if($status{$key} == $NOT_SUCCESS) {
-				return ($NOT_SUCCESS);
-			}
-		}
-		$msg = "Done";
-		info_debug_message($msg);
-		return ($SUCCESS);
-	}
-	$msg = "Missing argument [STATUS_STRUCTURE]";
-	error_message($msg);
-	return ($NOT_SUCCESS);
+    my %status = %{$_[0]};
+    my $msg = "None";
+    if(%status) {
+        $msg = "Checking status [hash structure]";
+        info_debug_message($msg);
+        foreach my $key (keys(%status)) {
+            if($status{$key} == $NOT_SUCCESS) {
+                return ($NOT_SUCCESS);
+            }
+        }
+        $msg = "Done";
+        info_debug_message($msg);
+        return ($SUCCESS);
+    }
+    $msg = "Missing argument [STATUS_STRUCTURE]";
+    error_message($msg);
+    return ($NOT_SUCCESS);
 }
 
 1;
@@ -72,13 +72,13 @@ CheckStatus - Checking statuses collected in hash structure
 
 =head1 SYNOPSIS
 
-	use CheckStatus qw(check_status);
+    use CheckStatus qw(check_status);
 
-	...
+    ...
 
-	if(check_status(\%status) == $NOT_SUCCESS) {
-		exit(130);
-	}
+    if(check_status(\%status) == $NOT_SUCCESS) {
+        exit(130);
+    }
 
 =head1 DESCRIPTION
 

@@ -37,35 +37,35 @@ use Status qw(:all);
 #
 # my %status = (VAR1 => 1, VAR2 => 0);
 # if(or_check_status(\%status)) {
-#	# true
-#	# notify admin | user
+#    # true
+#    # notify admin | user
 # } else {
-#	# false
-#	# return NOT_SUCCESS
-#	# or
-#	# exit 128
+#    # false
+#    # return NOT_SUCCESS
+#    # or
+#    # exit 128
 # }
 #
 sub or_check_status {
-	my %status = %{$_[0]};
-	my $msg = "None";
-	if(%status) {
-		$msg = "Checking status [hash structure]";
-		info_debug_message($msg);
-		foreach my $key (keys(%status)) {
-			if($status{$key} == NOT_SUCCESS) {
-				$msg = "Done";
-				info_debug_message($msg);
-				return (NOT_SUCCESS);
-			}
-		}
-		$msg = "Done";
-		info_debug_message($msg);
-		return (SUCCESS);
-	}
-	$msg = "Missing argument [STATUS_STRUCTURE]";
-	error_message($msg);
-	return (NOT_SUCCESS);
+    my %status = %{$_[0]};
+    my $msg = "None";
+    if(%status) {
+        $msg = "Checking status [hash structure]";
+        info_debug_message($msg);
+        foreach my $key (keys(%status)) {
+            if($status{$key} == NOT_SUCCESS) {
+                $msg = "Done";
+                info_debug_message($msg);
+                return (NOT_SUCCESS);
+            }
+        }
+        $msg = "Done";
+        info_debug_message($msg);
+        return (SUCCESS);
+    }
+    $msg = "Missing argument [STATUS_STRUCTURE]";
+    error_message($msg);
+    return (NOT_SUCCESS);
 }
 
 1;
@@ -77,15 +77,15 @@ OrCheckStatus - Checking statuses collected in hash structure.
 
 =head1 SYNOPSIS
 
-	use OrCheckStatus qw(or_check_status);
-	use Status qw(:all);
+    use OrCheckStatus qw(or_check_status);
+    use Status qw(:all);
 
-	...
+    ...
 
-	my %status = (VAR1 => 1, VAR2 => 0);
-	if(not or_check_status(\%status)) {
-		exit(130);
-	}
+    my %status = (VAR1 => 1, VAR2 => 0);
+    if(not or_check_status(\%status)) {
+        exit(130);
+    }
 
 =head1 DESCRIPTION
 

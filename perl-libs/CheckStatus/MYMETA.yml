@@ -15,7 +15,7 @@ meta-spec:
 name: CheckStatus
 no_index:
   directory:
-    - t
-    - inc
+	- t
+	- inc
 requires: {}
 version: '1.0'

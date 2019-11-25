@@ -39,16 +39,16 @@ our $TOOL_DBG = "false";
 #
 
 sub info_debug_message {
-	my $message = $_[0];
-	if(def($message)) {
-		my $fCallerParent = (caller(1))[3];
-		if("$TOOL_DBG" eq "true") {
-			print("[Info] " . $fCallerParent . " " . $message . "\n");
-		}
-	} else {
-		my $msg = "Missing argument [MESSAGE_TEXT]";
-		error_message($msg);
-	}
+    my $message = $_[0];
+    if(def($message)) {
+        my $fCallerParent = (caller(1))[3];
+        if("$TOOL_DBG" eq "true") {
+            print("[Info] " . $fCallerParent . " " . $message . "\n");
+        }
+    } else {
+        my $msg = "Missing argument [MESSAGE_TEXT]";
+        error_message($msg);
+    }
 }
 
 1;
@@ -60,12 +60,12 @@ InfoDebugMessage - Print info debug message in parent function.
 
 =head1 SYNOPSIS
 
-	use InfoDebugMessage qw(info_debug_message);
+    use InfoDebugMessage qw(info_debug_message);
 
-	...
+    ...
 
-	my $msg = "Some message";
-	info_debug_message($msg);
+    my $msg = "Some message";
+    info_debug_message($msg);
 
 =head1 DESCRIPTION
 
