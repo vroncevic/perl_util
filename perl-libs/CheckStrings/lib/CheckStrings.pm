@@ -35,33 +35,33 @@ use Status qw(:all);
 # ...
 #
 # if(check_strings(\%strings)) {
-#	# true
-#	# notify admin | user
+#    # true
+#    # notify admin | user
 # } else {
-#	# false
-#	# return NOT_SUCCESS
-#	# or
-#	# exit 128
+#    # false
+#    # return NOT_SUCCESS
+#    # or
+#    # exit 128
 # }
 #
 sub check_strings {
-	my %strings = %{$_[0]};
-	my $msg = "None";
-	if(%strings) {
-		$msg = "Checking strings [hash structure]";
-		info_debug_message($msg);
-		foreach my $key (keys(%strings)) {
-			if("$strings{$key}" eq "None") {
-				return (NOT_SUCCESS);
-			}
-		}
-		$msg = "Done";
-		info_debug_message($msg);
-		return (SUCCESS);
-	}
-	$msg = "Missing argument [STRING_STRUCTURE]";
-	error_message($msg);
-	return (NOT_SUCCESS);
+    my %strings = %{$_[0]};
+    my $msg = "None";
+    if(%strings) {
+        $msg = "Checking strings [hash structure]";
+        info_debug_message($msg);
+        foreach my $key (keys(%strings)) {
+            if("$strings{$key}" eq "None") {
+                return (NOT_SUCCESS);
+            }
+        }
+        $msg = "Done";
+        info_debug_message($msg);
+        return (SUCCESS);
+    }
+    $msg = "Missing argument [STRING_STRUCTURE]";
+    error_message($msg);
+    return (NOT_SUCCESS);
 }
 
 1;
@@ -73,20 +73,20 @@ CheckStrings - If one string from hash structure contain None string return 0.
 
 =head1 SYNOPSIS
 
-	use CheckStrings qw(check_strings);
-	use Status qw(:all);
+    use CheckStrings qw(check_strings);
+    use Status qw(:all);
 
-	...
+    ...
 
-	if(check_strings(\%strings)) {
-		# true
-		# notify admin | user
-	} else {
-		# false
-		# return NOT_SUCCESS
-		# or
-		# exit 128
-	}
+    if(check_strings(\%strings)) {
+        # true
+        # notify admin | user
+    } else {
+        # false
+        # return NOT_SUCCESS
+        # or
+        # exit 128
+    }
 
 =head1 DESCRIPTION
 

@@ -1,7 +1,7 @@
 #
-# @brief    Checking status hash structure
+# @brief	Checking status hash structure
 # @version  ver.1.0
-# @date     Tue Feb 14 20:38:14 CET 2017
+# @date	 Tue Feb 14 20:38:14 CET 2017
 # @company  Free software to use 2017
 # @author   Vladimir Roncevic <elektron.ronca@gmail.com>
 #

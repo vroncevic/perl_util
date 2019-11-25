@@ -37,13 +37,13 @@ use Status qw(:all);
 # info_message($msg);
 #
 sub info_message {
-	my $message = $_[0];
-	if(def($message)) {
-		print("[Info] " . $message . "\n");
-	} else {
-		my $msg = "Missing argument [MESSAGE_TEXT]";
-		error_message($msg);
-	}
+    my $message = $_[0];
+    if(def($message)) {
+        print("[Info] " . $message . "\n");
+    } else {
+        my $msg = "Missing argument [MESSAGE_TEXT]";
+        error_message($msg);
+    }
 }
 
 1;
@@ -55,12 +55,12 @@ InfoMessage - Print info message in parent function.
 
 =head1 SYNOPSIS
 
-	use InfoMessage qw(info_message);
+    use InfoMessage qw(info_message);
 
-	...
+    ...
 
-	my $msg = "Some message";
-	info_message($msg);
+    my $msg = "Some message";
+    info_message($msg);
 
 =head1 DESCRIPTION
 

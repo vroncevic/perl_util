@@ -39,40 +39,40 @@ use Status qw(:all);
 # $log{LOG_MESSAGE}="Started toolname";
 #
 # if(logging(\%log)) {
-#	# true
-#	# notify admin | user
+#    # true
+#    # notify admin | user
 # } else {
-#	# false
-#	# return NOT_SUCCESS
-#	# or
-#	# exit 128
+#    # false
+#    # return NOT_SUCCESS
+#    # or
+#    # exit 128
 # }
 #
 sub logging {
-	my $lref = $_[0];
-	my $msg = "None";
-	if(def($lref)) {
-		$msg = "Write log message to LOG file";
-		info_debug_message($msg);
-		my $time = localtime();
-		my $host = hostname();
-		$msg = "Checking log file [$$lref{LOG_FILE_PATH}]";
-		info_debug_message($msg);
-		my $fh;
-		if(not open($fh, ">>", "$$lref{LOG_FILE_PATH}")) {
-			$msg = "Faild to open log file\n$$lref{LOG_FILE_PATH}";
-			error_message($msg);
-			return (NOT_SUCCESS);
-		}
-		print($fh "[$time] $$lref{LOG_MESSAGE} [host: $host]\n");
-		$msg = "Done";
-		info_debug_message($msg);
-		close($fh);
-		return (SUCCESS);
-	}
-	$msg = "Missing argument [LOG_STRUCTURE]";
-	error_message($msg);
-	return (NOT_SUCCESS);
+    my $lref = $_[0];
+    my $msg = "None";
+    if(def($lref)) {
+        $msg = "Write log message to LOG file";
+        info_debug_message($msg);
+        my $time = localtime();
+        my $host = hostname();
+        $msg = "Checking log file [$$lref{LOG_FILE_PATH}]";
+        info_debug_message($msg);
+        my $fh;
+        if(not open($fh, ">>", "$$lref{LOG_FILE_PATH}")) {
+            $msg = "Faild to open log file\n$$lref{LOG_FILE_PATH}";
+            error_message($msg);
+            return (NOT_SUCCESS);
+        }
+        print($fh "[$time] $$lref{LOG_MESSAGE} [host: $host]\n");
+        $msg = "Done";
+        info_debug_message($msg);
+        close($fh);
+        return (SUCCESS);
+    }
+    $msg = "Missing argument [LOG_STRUCTURE]";
+    error_message($msg);
+    return (NOT_SUCCESS);
 }
 
 1;
@@ -84,22 +84,22 @@ Logging - Write log message to App/Tool/Script log file
 
 =head1 SYNOPSIS
 
-	use Logging qw(logging);
-	use Status qw(:all);
+    use Logging qw(logging);
+    use Status qw(:all);
 
-	my %log;
-	$log{LOG_FILE_PATH} = "/opt/toolname/toolname.log"
-	$log{LOG_MESSAGE} = "Started toolname";
+    my %log;
+    $log{LOG_FILE_PATH} = "/opt/toolname/toolname.log"
+    $log{LOG_MESSAGE} = "Started toolname";
 
-	if(logging(\%log)) {
-		# true
-		# notify admin | user
-	} else {
-		# false
-		# return NOT_SUCCESS
-		# or
-		# exit 128
-	}
+    if(logging(\%log)) {
+        # true
+        # notify admin | user
+    } else {
+        # false
+        # return NOT_SUCCESS
+        # or
+        # exit 128
+    }
 
 =head1 DESCRIPTION
 

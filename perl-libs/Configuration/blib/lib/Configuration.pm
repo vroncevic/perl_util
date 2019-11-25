@@ -25,8 +25,8 @@ use Status qw(:all);
 #
 # @brief   Load and parse configuration from CFG file
 # @params  Values required
-# 			cfg file path		  - path to configuration CFG file
-# 			preference structure  - configuration hash structure
+#             cfg file path          - path to configuration CFG file
+#             preference structure  - configuration hash structure
 # @retval  Success 1, else 0
 #
 # @usage
@@ -39,50 +39,50 @@ use Status qw(:all);
 # my $cfg = dirname(dirname(abs_path(__FILE__))) . "/conf/toolname.cfg";
 #
 # if(read_preference($cfg, \%preferences)) {
-#	# true
-#	# notify admin | user
+#    # true
+#    # notify admin | user
 # } else {
-#	# false
-#	# return NOT_SUCCESS
-#	# or
-#	# exit 128
+#    # false
+#    # return NOT_SUCCESS
+#    # or
+#    # exit 128
 # }
 #
 sub read_preference {
-	my ($cfgPath, $pref) = ($_[0], $_[1]);
-	my $msg = "None";
-	if(def($cfgPath)) {
-		$msg = "Load and parse configuration from CFG file";
-		info_debug_message($msg);
-		$msg = "Checking CFG file [$cfgPath]";
-		info_debug_message($msg);
-		if(-e "$cfgPath") {
-			my $fh;
-			if(not open($fh, "<", $cfgPath)) {
-				$msg = "Failed to open file [$cfgPath]";
-				error_message($msg);
-				return (NOT_SUCCESS);
-			}
-			my ($line, $key, $value);
-			while($line = <$fh>) {
-				chomp($line);
-				if(!($line =~ /^$/)) {
-					($key, $value) = split(/\s*=\s*/, $line);
-					$$pref{$key} = $value;
-				}
-			}
-			$msg = "Loaded file [$cfgPath]";
-			info_debug_message($msg);
-			close($fh);
-			return (SUCCESS);
-		}
-		$msg = "Check file [$cfgPath]";
-		error_message($msg);
-		return (NOT_SUCCESS);
-	}
-	$msg = "Missing argument [CONFIGURATION_FILE]";
-	error_message($msg);
-	return (NOT_SUCCESS);
+    my ($cfgPath, $pref) = ($_[0], $_[1]);
+    my $msg = "None";
+    if(def($cfgPath)) {
+        $msg = "Load and parse configuration from CFG file";
+        info_debug_message($msg);
+        $msg = "Checking CFG file [$cfgPath]";
+        info_debug_message($msg);
+        if(-e "$cfgPath") {
+            my $fh;
+            if(not open($fh, "<", $cfgPath)) {
+                $msg = "Failed to open file [$cfgPath]";
+                error_message($msg);
+                return (NOT_SUCCESS);
+            }
+            my ($line, $key, $value);
+            while($line = <$fh>) {
+                chomp($line);
+                if(!($line =~ /^$/)) {
+                    ($key, $value) = split(/\s*=\s*/, $line);
+                    $$pref{$key} = $value;
+                }
+            }
+            $msg = "Loaded file [$cfgPath]";
+            info_debug_message($msg);
+            close($fh);
+            return (SUCCESS);
+        }
+        $msg = "Check file [$cfgPath]";
+        error_message($msg);
+        return (NOT_SUCCESS);
+    }
+    $msg = "Missing argument [CONFIGURATION_FILE]";
+    error_message($msg);
+    return (NOT_SUCCESS);
 }
 
 1;
@@ -94,21 +94,21 @@ Configuration - Load and parse configuration from file.
 
 =head1 SYNOPSIS
 
-	use Configuration qw(read_preference);
-	use Status qw(:all);
+    use Configuration qw(read_preference);
+    use Status qw(:all);
 
-	my %preferences;
-	my $cfg = dirname(dirname(abs_path(__FILE__))) . "/conf/toolname.cfg";
+    my %preferences;
+    my $cfg = dirname(dirname(abs_path(__FILE__))) . "/conf/toolname.cfg";
 
-	if(read_preference($cfg, \%preferences)) {
-		# true
-		# notify admin | user
-	} else {
-		# false
-		# return NOT_SUCCESS
-		# or
-		# exit 128
-	}
+    if(read_preference($cfg, \%preferences)) {
+        # true
+        # notify admin | user
+    } else {
+        # false
+        # return NOT_SUCCESS
+        # or
+        # exit 128
+    }
 
 =head1 DESCRIPTION
 

@@ -36,15 +36,15 @@ use Status qw(:all);
 # error_message($msg);
 #
 sub error_message {
-	my $message = $_[0];
-	if(def($message)) {
-		my $fCallerParent = (caller(1))[3];
-		print("[Error] " . $fCallerParent . " " . $message . "\n");
-	} else {
-		my $fCaller = (caller(0))[3];
-		my $msg = "Missing argument [MESSAGE_TEXT]";
-		print("[Error] " . $fCaller . " " . $msg . "\n");
-	}
+    my $message = $_[0];
+    if(def($message)) {
+        my $fCallerParent = (caller(1))[3];
+        print("[Error] " . $fCallerParent . " " . $message . "\n");
+    } else {
+        my $fCaller = (caller(0))[3];
+        my $msg = "Missing argument [MESSAGE_TEXT]";
+        print("[Error] " . $fCaller . " " . $msg . "\n");
+    }
 }
 
 1;
@@ -56,12 +56,12 @@ ErrorMessage - Print error message in parent function.
 
 =head1 SYNOPSIS
 
-	use ErrorMessage qw(error_message);
+    use ErrorMessage qw(error_message);
 
-	...
+    ...
 
-	my $msg = "Some message";
-	error_message($msg);
+    my $msg = "Some message";
+    error_message($msg);
 
 =head1 DESCRIPTION
 

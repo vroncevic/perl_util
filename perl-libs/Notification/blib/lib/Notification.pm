@@ -41,41 +41,41 @@ use Status qw(:all);
 # $notification{MESSAGE} = "Simple message";
 #
 # if(notify(\%notification)) {
-#	# true
-#	# notify admin | user
+#    # true
+#    # notify admin | user
 # } else {
-#	# false
-#	# return NOT_SUCCESS
-#	# or
-#	# exit 128
+#    # false
+#    # return NOT_SUCCESS
+#    # or
+#    # exit 128
 # }
 #
 sub notify {
-	my $nref = $_[0];
-	my $msg = "None";
-	if(def($nref)) {
-		$msg = "Sending email to administrator";
-		info_debug_message($msg);
-		my $time = localtime();
-		my $host = hostname();
-		my $subject = "[NOTIFICATION] Workstation " . $host;
-		my $body = "[$time] " . $$nref{MESSAGE} . " [host: $host]\n";
-		my %mail = (
-			To => $$nref{ADMIN_EMAIL}, From => $$nref{EMAIL_FROM},
-			Subject => $subject, Message => $body
-		);
-		if(sendmail(%mail)) {
-			$msg = "Sent email to administrator";
-			info_debug_message($msg);
-			return (SUCCESS);
-		}
-		$msg = "Check sendmail configuration";
-		error_message($msg);
-		return (NOT_SUCCESS);
-	}
-	$msg = "Missing argument [NOTIFICATION_STRUCTURE]";
-	error_message($msg);
-	return (NOT_SUCCESS);
+    my $nref = $_[0];
+    my $msg = "None";
+    if(def($nref)) {
+        $msg = "Sending email to administrator";
+        info_debug_message($msg);
+        my $time = localtime();
+        my $host = hostname();
+        my $subject = "[NOTIFICATION] Workstation " . $host;
+        my $body = "[$time] " . $$nref{MESSAGE} . " [host: $host]\n";
+        my %mail = (
+            To => $$nref{ADMIN_EMAIL}, From => $$nref{EMAIL_FROM},
+            Subject => $subject, Message => $body
+        );
+        if(sendmail(%mail)) {
+            $msg = "Sent email to administrator";
+            info_debug_message($msg);
+            return (SUCCESS);
+        }
+        $msg = "Check sendmail configuration";
+        error_message($msg);
+        return (NOT_SUCCESS);
+    }
+    $msg = "Missing argument [NOTIFICATION_STRUCTURE]";
+    error_message($msg);
+    return (NOT_SUCCESS);
 }
 
 1;
@@ -87,23 +87,23 @@ Notification - Sending notification to administrator by email.
 
 =head1 SYNOPSIS
 
-	use Notification qw(notify);
-	use Status qw(:all);
+    use Notification qw(notify);
+    use Status qw(:all);
 
-	my %notification;
-	$notification{ADMIN_EMAIL} = "admin\@company.com"
-	$notification{EMAIL_FROM} = "ToolName\@hostname";
-	$notification{MESSAGE} = "Simple message";
+    my %notification;
+    $notification{ADMIN_EMAIL} = "admin\@company.com"
+    $notification{EMAIL_FROM} = "ToolName\@hostname";
+    $notification{MESSAGE} = "Simple message";
 
-	if(notify(\%notification)) {
-		# true
-		# notify admin | user
-	} else {
-		# false
-		# return NOT_SUCCESS
-		# or
-		# exit 128
-	}
+    if(notify(\%notification)) {
+        # true
+        # notify admin | user
+    } else {
+        # false
+        # return NOT_SUCCESS
+        # or
+        # exit 128
+    }
 
 =head1 DESCRIPTION
 

@@ -30,9 +30,9 @@ This module requires these other modules and libraries:
 	Cwd
 	File::Basename
 	InfoDebugMessage  https://github.com/vroncevic/perl_util
-	ErrorMessage      https://github.com/vroncevic/perl_util
-	Utils             https://github.com/vroncevic/perl_util
-	Status            https://github.com/vroncevic/perl_util
+	ErrorMessage	  https://github.com/vroncevic/perl_util
+	Utils			 https://github.com/vroncevic/perl_util
+	Status			https://github.com/vroncevic/perl_util
 
 COPYRIGHT AND LICENCE
 

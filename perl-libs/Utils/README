@@ -29,7 +29,7 @@ This module requires these other modules and libraries:
 	Exporter
 	Cwd
 	File::Basename
-	Status            https://github.com/vroncevic/perl_util
+	Status			https://github.com/vroncevic/perl_util
 
 COPYRIGHT AND LICENCE
 

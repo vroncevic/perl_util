@@ -34,21 +34,21 @@ use Status qw(:all);
 #
 # my $status;
 # if(def($status)) {
-#	# true
-#	# notify admin | user
+#    # true
+#    # notify admin | user
 # } else {
-#	# false
-#	# return NOT_SUCCESS
-#	# or
-#	# exit 128
+#    # false
+#    # return NOT_SUCCESS
+#    # or
+#    # exit 128
 # }
 #
 sub def {
-	my $var = $_[0];
-	if(defined($var)) {
-		return (SUCCESS);
-	}
-	return (NOT_SUCCESS);
+    my $var = $_[0];
+    if(defined($var)) {
+        return (SUCCESS);
+    }
+    return (NOT_SUCCESS);
 }
 
 1;
@@ -60,19 +60,19 @@ Utils - Helpful functions.
 
 =head1 SYNOPSIS
 
-	use Utils qw(def);
-	use Status qw(:all);
+    use Utils qw(def);
+    use Status qw(:all);
 
-	...
+    ...
 
-	my $status;
-	if(not def($status)) {
-		exit(130);
-	}
+    my $status;
+    if(not def($status)) {
+        exit(130);
+    }
 
-	if(def($status)) {
-		# Do operation for status SUCCESS
-	}
+    if(def($status)) {
+        # Do operation for status SUCCESS
+    }
 
 =head1 DESCRIPTION
 
