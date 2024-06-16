@@ -22,8 +22,8 @@ other information that should be provided before the modules are installed.
 .. |perl_util github contributors| image:: https://img.shields.io/github/contributors/vroncevic/perl_util.svg
    :target: https://github.com/vroncevic/perl_util/graphs/contributors
 
-.. |perl_util documentation status| image:: https://readthedocs.org/projects/ats-utilities/badge/?version=master
-   :target: https://ats-utilities.readthedocs.io/?badge=master
+.. |perl_util documentation status| image:: https://readthedocs.org/projects/perl-util/badge/?version=master
+   :target: https://perl-util.readthedocs.io/?badge=master
 
 .. toctree::
    :maxdepth: 4
