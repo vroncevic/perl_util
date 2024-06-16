@@ -1,0 +1,11 @@
+name: perl_util_toc
+on:
+  push:
+    paths:
+      - '**.md'
+jobs:
+  generateTOC:
+    name: perl_util_toc
+    runs-on: ubuntu-latest
+    steps:
+      - uses: technote-space/toc-generator@v4
