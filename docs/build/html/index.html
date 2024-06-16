@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>perl_util (Perl Package Modules) &#8212; perl_util https://github.com/vroncevic/perl_util/releases documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=514cf933" />
+    
+    <script src="_static/documentation_options.js?v=e6ecb693"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="#">perl_util https://github.com/vroncevic/perl_util/releases documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">perl_util (Perl Package Modules)</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="perl-util-perl-package-modules">
+<h1>perl_util (Perl Package Modules)<a class="headerlink" href="#perl-util-perl-package-modules" title="Link to this heading">¶</a></h1>
+<p><strong>perl_util</strong> is framework for creating Apps/Tools/Scripts.</p>
+<p>Developed in <a class="reference external" href="https://www.perl.org/">perl</a> code.</p>
+<p>The README is used to introduce the modules and provide instructions on
+how to install the modules, any machine dependencies it may have and any
+other information that should be provided before the modules are installed.</p>
+<p><a class="reference external" href="https://github.com/vroncevic/perl_util/actions/workflows/perl_util_checker.yml"><img alt="perl_util checker" src="https://github.com/vroncevic/perl_util/actions/workflows/perl_util_checker.yml/badge.svg" /></a> <a class="reference external" href="https://github.com/vroncevic/perl_util/issues"><img alt="perl_util github issues" src="https://img.shields.io/github/issues/vroncevic/perl_util.svg" /></a> <a class="reference external" href="https://github.com/vroncevic/perl_util/graphs/contributors"><img alt="perl_util github contributors" src="https://img.shields.io/github/contributors/vroncevic/perl_util.svg" /></a></p>
+<p><a class="reference external" href="https://ats-utilities.readthedocs.io/?badge=master"><img alt="perl_util documentation status" src="https://readthedocs.org/projects/ats-utilities/badge/?version=master" /></a></p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">perl_util (Perl Package Modules)</a></li>
+</ul>
+</div>
+</section>
+<section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h1>
+<p>Used next development environment</p>
+<p><img alt="debian linux os" src="https://raw.githubusercontent.com/vroncevic/perl_util/dev/docs/debtux.png" /></p>
+<p>Navigate to release <a class="reference external" href="https://github.com/vroncevic/perl_util/releases">page</a> download and extract release archive.</p>
+<p>To install <strong>perl_util</strong></p>
+<p>Follow instructions from README for each module.</p>
+<p>Set INSTALL_BASE=/usr/local/perl/</p>
+</section>
+<section id="dependencies">
+<h1>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">¶</a></h1>
+<p><strong>perl_util</strong> requires next modules and libraries</p>
+<p>Check requires from README for each module.</p>
+</section>
+<section id="library-structure">
+<h1>Library structure<a class="headerlink" href="#library-structure" title="Link to this heading">¶</a></h1>
+<p><strong>perl_util</strong> is based on MOP.</p>
+<p>Library structure</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>perl-libs/
+<span class="w">    </span>├──<span class="w"> </span>CheckStatus/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>blib
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>arch/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">       </span>└──<span class="w"> </span>CheckStatus/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>bin/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>CheckStatus/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>CheckStatus.pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man1/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man3/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>CheckStatus.3pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>script/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Changes
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>CheckStatus.pm
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.old
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.PL
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST.bak
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.json
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.yml
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>pm_to_blib
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>README
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>t/
+<span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>Status.t
+<span class="w">    </span>├──<span class="w"> </span>CheckStrings/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>blib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>arch/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">       </span>└──<span class="w"> </span>CheckStrings/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>bin/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>CheckStrings/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>CheckStrings.pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man1/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man3/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>CheckStrings.3pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>script/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Changes
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>CheckStrings.pm
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.old
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.PL
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST.bak
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.json
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.yml
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>pm_to_blib
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>README
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>t/
+<span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>Status.t
+<span class="w">    </span>├──<span class="w"> </span>Configuration/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>blib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>arch/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">       </span>└──<span class="w"> </span>Configuration/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>bin/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Configuration/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Configuration.pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man1/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man3/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Configuration.3pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>script/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Changes
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Configuration.pm
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.PL
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST.bak
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.json
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.yml
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>pm_to_blib
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>README
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>t/
+<span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>Configuration.t
+<span class="w">    </span>├──<span class="w"> </span>ErrorMessage/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>blib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>arch/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">       </span>└──<span class="w"> </span>ErrorMessage/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>bin/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>ErrorMessage/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>ErrorMessage.pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man1/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man3/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>ErrorMessage.3pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>script/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Changes
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>ErrorMessage.pm
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.PL
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST.bak
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.json
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.yml
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>pm_to_blib
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>README
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>t/
+<span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>ErrorMessage.t
+<span class="w">    </span>├──<span class="w"> </span>InfoDebugMessage/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>blib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>arch/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">       </span>└──<span class="w"> </span>InfoDebugMessage/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>bin/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>InfoDebugMessage/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>InfoDebugMessage.pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man1/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man3/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>InfoDebugMessage.3pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>script/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Changes
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>InfoDebugMessage.pm
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.PL
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST.bak
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.json
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.yml
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>pm_to_blib
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>README
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>t/
+<span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>InfoDebugMessage.t
+<span class="w">    </span>├──<span class="w"> </span>InfoMessage/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>blib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>arch/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">       </span>└──<span class="w"> </span>InfoMessage/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>bin/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>InfoMessage/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>InfoMessage.pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man1/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man3/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>InfoMessage.3pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>script/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Changes
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>InfoMessage.pm
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.PL
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST.bak
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.json
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.yml
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>pm_to_blib
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>README
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>t/
+<span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>InfoMessage.t
+<span class="w">    </span>├──<span class="w"> </span>Logging/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>blib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>arch/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">       </span>└──<span class="w"> </span>Logging/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>bin/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Logging/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Logging.pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man1/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man3/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Logging.3pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>script/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Changes
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Logging.pm
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.PL
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST.bak
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.json
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.yml
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>pm_to_blib
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>README
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>t/
+<span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>Logging.t
+<span class="w">    </span>├──<span class="w"> </span>Notification/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>blib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>arch/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">       </span>└──<span class="w"> </span>Notification/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>bin/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Notification/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Notification.pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man1/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man3/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Notification.3pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>script/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Changes
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Notification.pm
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.PL
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST.bak
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.json
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.yml
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>pm_to_blib
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>README
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>t/
+<span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>Notification.t
+<span class="w">    </span>├──<span class="w"> </span>OrCheckStatus/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>blib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>arch/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">       </span>├──<span class="w"> </span>CheckStatus/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">       </span>└──<span class="w"> </span>OrCheckStatus/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>bin/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>CheckStatus/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>OrCheckStatus/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>CheckStatus.pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>OrCheckStatus.pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man1/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man3/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>CheckStatus.3pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>OrCheckStatus.3pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>script/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Changes
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>OrCheckStatus.pm
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.old
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.PL
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST.bak
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.json
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.yml
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>pm_to_blib
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>README
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>t/
+<span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>Status.t
+<span class="w">    </span>├──<span class="w"> </span>Status/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>blib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>arch/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">       </span>└──<span class="w"> </span>Status/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>bin/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>auto/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Status/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Status.pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man1/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>man3/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Status.3pm
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>script/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Changes
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Status.pm
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.old
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.PL
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MANIFEST.bak
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.json
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>MYMETA.yml
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>pm_to_blib
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>README
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>t/
+<span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>Status.t
+<span class="w">    </span>└──<span class="w"> </span>Utils/
+<span class="w">        </span>├──<span class="w"> </span>blib/
+<span class="w">        </span>│<span class="w">   </span>├──<span class="w"> </span>arch/
+<span class="w">        </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>auto/
+<span class="w">        </span>│<span class="w">   </span>│<span class="w">       </span>└──<span class="w"> </span>Utils/
+<span class="w">        </span>│<span class="w">   </span>├──<span class="w"> </span>bin/
+<span class="w">        </span>│<span class="w">   </span>├──<span class="w"> </span>lib/
+<span class="w">        </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>auto/
+<span class="w">        </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Utils/
+<span class="w">        </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Utils.pm
+<span class="w">        </span>│<span class="w">   </span>├──<span class="w"> </span>man1/
+<span class="w">        </span>│<span class="w">   </span>├──<span class="w"> </span>man3/
+<span class="w">        </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Utils.3pm
+<span class="w">        </span>│<span class="w">   </span>└──<span class="w"> </span>script/
+<span class="w">        </span>├──<span class="w"> </span>Changes
+<span class="w">        </span>├──<span class="w"> </span>lib/
+<span class="w">        </span>│<span class="w">   </span>└──<span class="w"> </span>Utils.pm
+<span class="w">        </span>├──<span class="w"> </span>Makefile
+<span class="w">        </span>├──<span class="w"> </span>Makefile.PL
+<span class="w">        </span>├──<span class="w"> </span>MANIFEST
+<span class="w">        </span>├──<span class="w"> </span>MANIFEST.bak
+<span class="w">        </span>├──<span class="w"> </span>MYMETA.json
+<span class="w">        </span>├──<span class="w"> </span>MYMETA.yml
+<span class="w">        </span>├──<span class="w"> </span>pm_to_blib
+<span class="w">        </span>├──<span class="w"> </span>README
+<span class="w">        </span>└──<span class="w"> </span>t/
+<span class="w">            </span>└──<span class="w"> </span>Utils.t
+</pre></div>
+</div>
+</section>
+<section id="copyright-and-licence">
+<h1>Copyright and licence<a class="headerlink" href="#copyright-and-licence" title="Link to this heading">¶</a></h1>
+<p><a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0"><img alt="license: gpl v3" src="https://img.shields.io/badge/License-GPLv3-blue.svg" /></a> <a class="reference external" href="https://opensource.org/licenses/Apache-2.0"><img alt="license: apache 2.0" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a></p>
+<p>Copyright (C) 2015 - 2024 by <a class="reference external" href="https://vroncevic.github.io/perl_util">vroncevic.github.io/perl_util</a></p>
+<p><strong>perl_util</strong> is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.18.2 or,
+at your option, any later version of Perl 5 you may have available.</p>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="#">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">perl_util (Perl Package Modules)</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#library-structure">Library structure</a></li>
+<li><a class="reference internal" href="#copyright-and-licence">Copyright and licence</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="#">perl_util https://github.com/vroncevic/perl_util/releases documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">perl_util (Perl Package Modules)</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2017, https://vroncevic.github.io/perl_util.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>
