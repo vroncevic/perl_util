@@ -20,7 +20,7 @@ decide whether fixes for the module are worth downloading.
 - [Dependencies](#dependencies)
 - [Library structure](#library-structure)
 - [Docs](#docs)
-- [Copyright and Licence](#copyright-and-licence)
+- [Copyright and licence](#copyright-and-licence)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
